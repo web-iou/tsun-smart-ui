@@ -1,12 +1,131 @@
-/*
- * @Author: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @Date: 2025-06-12 23:56:59
- * @LastEditors: error: error: git config user.name & please set dead value or install git && error: git config user.email & please set dead value or install git & please set dead value or install git
- * @LastEditTime: 2025-06-13 00:31:48
- * @FilePath: \TSUN_SMART_UI\src\components\Button\index.tsx
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
-const Button =()=>{
-    return <></>
-}
-export default Button
+import {
+  Pressable,
+  StyleSheet,
+  View,
+  type PressableProps,
+  type ViewStyle,
+  ActivityIndicator,
+  type TextStyle,
+} from "react-native";
+import Text from "../Text";
+import { forwardRef } from "react";
+import type { themeProp } from "../../theme";
+import { useAppTheme } from "../Provider";
+import Icon, { type IconName } from "../Icon";
+import {
+  getButtonStyles,
+  getTextStyles,
+  getIconStyles,
+  getPressedStyle,
+} from "./utils";
+
+export type ButtonVariant = "primary" | "outline";
+export type ButtonSize = "large" | "medium";
+
+type Props = PressableProps & {
+  title: string;
+  theme?: themeProp;
+  style?: ViewStyle;
+  icon?: IconName;
+  variant?: ButtonVariant;
+  size?: ButtonSize;
+  loading?: boolean;
+  textStyle?: TextStyle;
+};
+
+const Button = forwardRef<View, Props>(
+  (
+    {
+      title,
+      theme: _initialTheme,
+      style,
+      icon,
+      variant = "primary",
+      size = "large",
+      loading = false,
+      textStyle,
+      ...props
+    },
+    ref
+  ) => {
+    const theme = useAppTheme(_initialTheme);
+
+    // 从主题中获取按钮颜色
+    const colors = theme.colors.button;
+
+    // 通用样式参数
+    const commonParams = {
+      variant,
+      disabled: !!props.disabled || loading,
+      colors,
+    };
+
+    // 获取loading状态下的指示器颜色
+    const getLoadingColor = () => {
+      if (variant === "outline") {
+        return colors.outline.text;
+      }
+      return colors.primary.text;
+    };
+
+    return (
+      <Pressable
+        ref={ref}
+        disabled={props.disabled || loading}
+        style={({ pressed }) => [
+          styles.container,
+          getButtonStyles({ ...commonParams, size }),
+          pressed && !loading && getPressedStyle(commonParams),
+          style,
+        ]}
+        {...props}
+      >
+        {loading ? (
+          <ActivityIndicator
+            size="small"
+            color={getLoadingColor()}
+            style={styles.loadingIndicator}
+          />
+        ) : (
+          icon && (
+            <Icon
+              name={icon}
+              style={[
+                styles.leftIcon,
+                getIconStyles({ ...commonParams, size }),
+              ]}
+            />
+          )
+        )}
+
+        <Text
+          variant="bodyStrong"
+          style={[getTextStyles(commonParams), textStyle]}
+        >
+          {title}
+        </Text>
+      </Pressable>
+    );
+  }
+);
+
+Button.displayName = "Button";
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: "center",
+    width: "100%",
+    justifyContent: "center",
+    borderRadius: 100,
+    flexDirection: "row",
+    paddingHorizontal: 32,
+  },
+  leftIcon: {
+    marginRight: 8,
+  },
+  loadingIndicator: {
+    marginRight: 8,
+  },
+});
+
+export default Button;
