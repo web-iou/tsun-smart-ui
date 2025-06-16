@@ -75,8 +75,7 @@ const styles = StyleSheet.create({
     height: 48,
     borderRadius: 100,
     flexDirection: "row",
-    paddingLeft: 20,
-    paddingRight: 8,
+    paddingHorizontal: 20,
     alignItems: "center",
   },
   leftIcon: {

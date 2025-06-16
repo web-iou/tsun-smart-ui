@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     width: "auto",
     paddingHorizontal: 8,
     minWidth: 99,
+    marginRight: -12,
   },
 });
 
