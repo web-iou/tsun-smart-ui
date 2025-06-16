@@ -3,14 +3,18 @@ import type { themeProp } from "../../theme";
 import { useAppTheme } from "../Provider";
 import Text from "../Text";
 import Icon from "../Icon";
-type Props<T extends readonly string[]> = {
+type DataItem = {
+  label: string;
+  value: string;
+};
+type Props<T extends readonly DataItem[]> = {
   theme?: themeProp;
-  onChange: (value: T[number]) => void;
-  value: T[number];
+  onChange: (value: T[number]["value"]) => void;
+  value: T[number]["value"];
   data: T;
   size?: "large" | "medium";
 };
-const Radio = <T extends readonly string[]>({
+const Radio = <T extends readonly DataItem[]>({
   value,
   theme: initialTheme,
   data,
@@ -50,20 +54,20 @@ const Radio = <T extends readonly string[]>({
                 borderColor: theme.colors.border.primary,
               },
             ]}
-            key={item}
+            key={item.value}
             onPress={() => {
-              onChange?.(item);
+              onChange?.(item.value);
             }}
           >
             <Text
-              variant={item === value ? "bodyStrong" : "bodyMedium"}
+              variant={item.value === value ? "bodyStrong" : "bodyMedium"}
               style={{
                 color: theme.colors.neutral.title,
               }}
             >
-              {item}
+              {item.label}
             </Text>
-            {value === item && (
+            {value === item.value && (
               <Icon
                 name="check"
                 size={20}

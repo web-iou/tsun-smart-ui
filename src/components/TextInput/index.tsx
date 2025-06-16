@@ -63,7 +63,7 @@ const TextInput = ({
           ref={ref}
           style={[styles.textInput, props.style]}
           placeholderTextColor={theme.colors.neutral.tip}
-          clearButtonMode={showClearButton ? "always" : "never"}
+          clearButtonMode={showClearButton ? "while-editing" : "never"}
         />
         {right}
       </View>
