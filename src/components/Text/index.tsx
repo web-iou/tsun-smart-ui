@@ -47,7 +47,6 @@ const Text = ({
       style={[
         {
           color: theme.colors?.neutral.disabled,
-          backgroundColor: theme.colors.error.light,
         },
         variantStyle,
         style,

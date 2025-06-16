@@ -1,6 +1,5 @@
 const path = require("path");
 const { getDefaultConfig } = require("@expo/metro-config");
-const { withMetroConfig } = require("react-native-monorepo-config");
 
 const root = path.resolve(__dirname, "..");
 
@@ -10,15 +9,19 @@ const root = path.resolve(__dirname, "..");
  *
  * @type {import('metro-config').MetroConfig}
  */
-const config = withMetroConfig(getDefaultConfig(__dirname), {
-  root,
-  dirname: __dirname,
-});
-config.resolver.disableHierarchicalLookup = true;
-config.resolver.unstable_enablePackageExports = true;
+module.exports = (async () => {
+  const { withMetroConfig } = await import("react-native-monorepo-config");
 
-// 添加字体文件支持
-config.resolver.assetExts.push("ttf", "otf", "woff", "woff2");
-config.resolver.platforms = ["ios", "android", "native", "web"];
+  const config = withMetroConfig(getDefaultConfig(__dirname), {
+    root,
+    dirname: __dirname,
+  });
+  config.resolver.disableHierarchicalLookup = true;
+  config.resolver.unstable_enablePackageExports = true;
 
-module.exports = config;
+  // 添加字体文件支持
+  config.resolver.assetExts.push("ttf", "otf", "woff", "woff2");
+  config.resolver.platforms = ["ios", "android", "native", "web"];
+
+  return config;
+})();

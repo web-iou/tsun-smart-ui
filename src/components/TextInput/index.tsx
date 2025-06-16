@@ -39,7 +39,6 @@ const TextInput = ({
           style={[
             {
               color: theme.colors.neutral.secondaryTitle,
-              backgroundColor: theme.colors.success.primary,
             },
             styles.label,
           ]}
