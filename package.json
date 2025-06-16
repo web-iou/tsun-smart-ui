@@ -1,6 +1,6 @@
 {
   "name": "tsun-smart-ui",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "UI Library",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
