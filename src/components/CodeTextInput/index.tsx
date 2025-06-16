@@ -1,7 +1,7 @@
 import Button from "../Button";
 import TextInput from "../TextInput";
 import { useCountdown } from "../../hooks";
-import { useState } from "react";
+import { RefObject, useImperativeHandle, useState } from "react";
 import { StyleSheet } from "react-native";
 
 // 国际化文本配置接口
@@ -21,9 +21,12 @@ const defaultI18n: Required<CodeTextInputI18n> = {
 interface CodeButtonProps {
   onPress: () => void;
   i18n: Required<CodeTextInputI18n>;
+  ref?: RefObject<{
+    setTargetDate: (date: number) => void;
+  }>;
 }
 
-const CodeButton = ({ onPress, i18n }: CodeButtonProps) => {
+const CodeButton = ({ onPress, i18n, ref }: CodeButtonProps) => {
   const [targetDate, setTargetDate] = useState<number>();
   const { formattedRes, timeLeft } = useCountdown({
     targetDate,
@@ -32,6 +35,11 @@ const CodeButton = ({ onPress, i18n }: CodeButtonProps) => {
     },
   });
 
+  useImperativeHandle(ref, () => {
+    return {
+      setTargetDate,
+    };
+  }, []);
   // 获取按钮文本
   const getButtonText = () => {
     if (timeLeft > 0) {
@@ -47,10 +55,7 @@ const CodeButton = ({ onPress, i18n }: CodeButtonProps) => {
     <Button
       style={styles.button}
       title={getButtonText()}
-      onPress={() => {
-        setTargetDate(new Date().getTime() + 60 * 1000);
-        onPress?.();
-      }}
+      onPress={onPress}
       disabled={timeLeft > 0}
     />
   );
@@ -68,6 +73,7 @@ export interface CodeTextInputProps {
 const CodeTextInput = ({
   onPress,
   i18n = {},
+  btnRef,
   ...textInputProps
 }: CodeTextInputProps) => {
   // 合并默认文本和用户自定义文本
@@ -76,7 +82,7 @@ const CodeTextInput = ({
   return (
     <TextInput
       placeholder="请输入验证码"
-      right={<CodeButton onPress={onPress} i18n={mergedI18n} />}
+      right={<CodeButton ref={btnRef} onPress={onPress} i18n={mergedI18n} />}
       {...textInputProps}
     />
   );

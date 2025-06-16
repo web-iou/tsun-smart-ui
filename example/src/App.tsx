@@ -19,9 +19,10 @@ import {
   Switch,
   Search,
 } from "tsun-smart-ui";
+import React from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -37,6 +38,10 @@ export default function RootLayout() {
   const [switchValue4, setSwitchValue4] = useState(false);
   const [switchValue5, setSwitchValue5] = useState(true);
   const [switchValue6, setSwitchValue6] = useState(false);
+  const btnRef = useRef<{
+    setTargetDate: (date: number) => void;
+  }>(null);
+
   useEffect(() => {
     if (loaded || error) {
       SplashScreen.hideAsync();
@@ -214,7 +219,12 @@ export default function RootLayout() {
             <TextInput placeholder="请输入" readOnly />
 
             {/* 默认中文 */}
-            <CodeTextInput onPress={() => console.log("验证码输入")} />
+            <CodeTextInput
+              onPress={() => {
+                btnRef.current?.setTargetDate(Date.now() + 60 * 1000);
+              }}
+              btnRef={btnRef}
+            />
 
             {/* 英文国际化 */}
             <CodeTextInput
