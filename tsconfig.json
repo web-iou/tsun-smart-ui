@@ -11,8 +11,10 @@
     "jsx": "react-jsx",
     "lib": ["ESNext"],
     "module": "ESNext",
-    "moduleResolution": "bundler",
-    "noEmit": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "./lib/typescript",
+    "sourceMap": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
@@ -23,7 +25,8 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext",
-    "verbatimModuleSyntax": true
-  }
+    "target": "ESNext"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["lib", "example", "**/__tests__/*"]
 }
