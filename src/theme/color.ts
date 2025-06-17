@@ -201,18 +201,18 @@ export const colors: ColorSystem = {
 export const darkColors: ColorSystem = {
   // 品牌色
   brand: {
-    primary: "#FF891F", // 主色
-    onPrimary: "#EB7E1D", // 辅助色
-    primaryLight: "#332414", // 深色主题下的浅色
-    primaryDisabled: "#4D3521", // 深色主题下的禁用色
+    primary: "#EB882F", // 主色
+    onPrimary: "#D67C2B", // 辅助色
+    primaryLight: "#49321F", // 深色主题下的浅色
+    primaryDisabled: "#69411F", // 深色主题下的禁用色
   },
 
   // 按钮颜色 - 深色主题
   button: {
     primary: {
-      background: "#FF7A00", // 主要按钮背景色
-      pressed: "#E66A00", // 主要按钮按压状态
-      disabled: "#4D3521", // 深色主题下的禁用状态
+      background: "#EB882F", // 主要按钮背景色
+      pressed: "#D67C2B", // 主要按钮按压状态
+      disabled: "#69411F", // 深色主题下的禁用状态
       text: "#FFFFFF", // 主要按钮文本色
       textDisabled: "#999999", // 深色主题下的禁用文本色
     },
@@ -228,38 +228,38 @@ export const darkColors: ColorSystem = {
   },
 
   border: {
-    primary: "#333333", // 深色主题边框色
+    primary: "#3D3D3D", // 深色主题边框色
   },
   background: {
-    disabled: "#2A2A2A",
-    primary: "#1A1A1A",
+    disabled: "#292929",
+    primary: "#1C1D1F",
   },
   // 中性色 - 深色主题
   neutral: {
-    title: "#FFFFFF", // 深色主题标题色
-    secondaryTitle: "#CCCCCC", // 深色主题副标题
-    primary: "#999999", // 深色主题主要文本
-    tip: "#666666", // 深色主题提示文本
-    disabled: "#444444", // 深色主题禁用色
-    white: "#000000", // 深色主题"白色"实际为黑色
+    title: "#E0E0E0", // 深色主题标题色
+    secondaryTitle: "#B8B8B8", // 深色主题副标题
+    primary: "#8F8F8F", // 深色主题主要文本
+    tip: "#595959", // 深色主题提示文本
+    disabled: "#525252", // 深色主题禁用色
+    white: "#fff", // 深色主题"白色"实际为黑色
   },
   info: {
-    primary: "#338BFF", // 蓝色
-    light: "#EAF3FF", // 浅蓝
+    primary: "#4797FF", // 蓝色
+    light: "#233E63", // 浅蓝
   },
 
   success: {
-    primary: "#1FC16B", // 绿色
-    light: "#E8F9F0", // 浅绿
+    primary: "#2EC173", // 绿色
+    light: "#1D4632", // 浅绿
   },
 
   error: {
-    primary: "#F75455", // 红色
-    light: "#FFF0F0", // 浅红
+    primary: "#F76869", // 红色
+    light: "#532B2C", // 浅红
   },
 
   warning: {
-    primary: "#FF9500", // 警告色
+    primary: "#EB882F", // 警告色
     light: "#FFF7E6", // 浅黄
   },
 };

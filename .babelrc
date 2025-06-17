@@ -1,8 +1,6 @@
 {
   "presets": [
-    ["@babel/preset-react", {
-      "runtime": "automatic"
-    }],
-    "@react-native/babel-preset"
+    "@react-native/babel-preset",
+    "nativewind/babel"
   ]
 } 

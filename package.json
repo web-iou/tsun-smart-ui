@@ -145,6 +145,7 @@
     ]
   },
   "dependencies": {
-    "@callstack/react-theme-provider": "^3.0.9"
+    "@callstack/react-theme-provider": "^3.0.9",
+    "nativewind": "^4.1.23"
   }
 }

@@ -3,11 +3,11 @@ import Text from "../Text";
 import { useAppTheme } from "../Provider";
 import type { themeProp } from "../../theme";
 import { getTagColors, type TagType } from "./utils";
-
 type Props = {
   type: TagType;
   theme?: themeProp;
   children: React.ReactNode;
+  className?:string
 } & ViewProps;
 
 const Tag = ({
@@ -44,7 +44,6 @@ const Tag = ({
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 12,

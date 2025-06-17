@@ -6,11 +6,11 @@ import {
   StyleSheet,
   View,
   type ViewProps,
+  ViewStyle,
 } from "react-native";
 import Text from "../Text";
 import { useAppTheme } from "../Provider";
 import type { themeProp } from "../../theme";
-
 export interface SwitchProps extends Omit<ViewProps, "children"> {
   /** 开关状态 */
   value: boolean;
@@ -28,6 +28,8 @@ export interface SwitchProps extends Omit<ViewProps, "children"> {
   offText?: string;
   /** 主题 */
   theme?: themeProp;
+  style?: ViewStyle;
+  className?: string;
 }
 
 const Switch: React.FC<SwitchProps> = ({
@@ -153,7 +155,6 @@ const Switch: React.FC<SwitchProps> = ({
     </Pressable>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     borderRadius: 30,

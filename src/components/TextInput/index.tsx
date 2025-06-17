@@ -10,14 +10,14 @@ import Text from "../Text";
 import type { IconName } from "../Icon";
 import Icon from "../Icon";
 import type { ReactNode, RefObject } from "react";
-
-type Props = TextInputProps & {
+export type Props = TextInputProps & {
   theme?: themeProp;
   label?: string;
   left?: IconName;
   showClearButton?: boolean;
   right?: ReactNode;
   ref?: RefObject<RNTextInput | null>;
+  className?: string;
 };
 
 const TextInput = ({
@@ -28,11 +28,12 @@ const TextInput = ({
   right,
   ref,
   showClearButton = false,
+  className,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const theme = useAppTheme(initialTheme);
   return (
-    <View style={styles.textInput}>
+    <View className={className}>
       {label && (
         <Text
           variant="bodyMedium"

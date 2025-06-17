@@ -1,3 +1,5 @@
+/// <reference types="nativewind/types" />
+
 // 导出主题相关
 export { default as colors, darkColors } from "./theme/color";
 export { lightTheme, darkTheme } from "./theme";

@@ -2,8 +2,7 @@ import Button from "../Button";
 import TextInput from "../TextInput";
 import { useCountdown } from "../../hooks";
 import { RefObject, useImperativeHandle, useState } from "react";
-import { StyleSheet } from "react-native";
-
+import { StyleSheet, ViewStyle } from "react-native";
 // 国际化文本配置接口
 export interface CodeTextInputI18n {
   /** 发送验证码按钮文本 */
@@ -45,7 +44,7 @@ const CodeButton = ({ onPress, i18n, ref }: CodeButtonProps) => {
     if (timeLeft > 0) {
       return i18n.resendTemplate.replace(
         "{seconds}",
-        formattedRes.seconds.toString()
+        formattedRes.seconds.toString(),
       );
     }
     return i18n.sendText;
@@ -66,6 +65,8 @@ export interface CodeTextInputProps {
   onPress: () => void;
   /** 国际化文本配置 */
   i18n?: CodeTextInputI18n;
+  style?: ViewStyle;
+  className?: string;
   /** 其他TextInput属性 */
   [key: string]: any;
 }
@@ -73,6 +74,7 @@ export interface CodeTextInputProps {
 const CodeTextInput = ({
   onPress,
   i18n = {},
+  style,
   btnRef,
   ...textInputProps
 }: CodeTextInputProps) => {
@@ -81,13 +83,13 @@ const CodeTextInput = ({
 
   return (
     <TextInput
+      style={style}
       placeholder="请输入验证码"
       right={<CodeButton ref={btnRef} onPress={onPress} i18n={mergedI18n} />}
       {...textInputProps}
     />
   );
 };
-
 const styles = StyleSheet.create({
   button: {
     height: 36,

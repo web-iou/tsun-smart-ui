@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, StyleSheet, View, ViewStyle } from "react-native";
 import type { themeProp } from "../../theme";
 import { useAppTheme } from "../Provider";
 import Text from "../Text";
@@ -13,6 +13,8 @@ type Props<T extends readonly DataItem[]> = {
   value: T[number]["value"];
   data: T;
   size?: "large" | "medium";
+  style?: ViewStyle;
+  className?: string;
 };
 const Radio = <T extends readonly DataItem[]>({
   value,
@@ -20,6 +22,8 @@ const Radio = <T extends readonly DataItem[]>({
   data,
   onChange,
   size = "large",
+  style,
+  ...props
 }: Props<T>) => {
   const theme = useAppTheme(initialTheme);
   const getItemStyle = () => {
@@ -41,7 +45,9 @@ const Radio = <T extends readonly DataItem[]>({
         {
           backgroundColor: theme.colors.neutral.white,
         },
+        style,
       ]}
+      {...props}
     >
       {data.map((item, index) => {
         return (

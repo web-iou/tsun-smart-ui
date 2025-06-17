@@ -5,14 +5,17 @@ import {
   Platform,
   UIManager,
   LayoutAnimation,
+  ViewStyle,
 } from "react-native";
-import TextInput from "../TextInput";
+import TextInput, { type Props as TextInputProps } from "../TextInput";
 import Text from "../Text";
 import type { themeProp } from "../../theme";
 import { useAppTheme } from "../Provider";
 import { useRef, useState } from "react";
-type Props = {
+type Props = TextInputProps & {
   theme?: themeProp;
+  style?: ViewStyle;
+  className?: string;
 };
 if (
   Platform.OS === "android" &&
@@ -38,15 +41,14 @@ const searchAnimation = {
   },
 };
 
-const Search = ({ theme: initialTheme }: Props) => {
+const Search = ({ theme: initialTheme, style, className, ...props }: Props) => {
   const theme = useAppTheme(initialTheme);
   const [onFocus, setOnFocus] = useState(false);
   const textInputRef = useRef<RNTextInput>(null);
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]} className={className}>
       <TextInput
         left="search"
-        placeholder="请输入要查询的内容"
         showClearButton
         ref={textInputRef}
         onBlur={() => {
@@ -57,6 +59,7 @@ const Search = ({ theme: initialTheme }: Props) => {
           setOnFocus(true);
           LayoutAnimation.configureNext(searchAnimation);
         }}
+        {...props}
       />
       {onFocus && (
         <Text

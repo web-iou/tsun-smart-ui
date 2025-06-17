@@ -16,12 +16,16 @@ type Props = {
     onPress?: () => void;
   }[];
   listItemStyle?: ViewStyle;
+  style?: ViewStyle;
+  className?: string;
 };
 const Cell = ({
   data,
   theme: initialTheme,
   size = "medium",
+  style,
   listItemStyle,
+  ...props
 }: Props) => {
   const theme = useAppTheme(initialTheme);
   const getItemStyle = () => {
@@ -43,7 +47,9 @@ const Cell = ({
         {
           backgroundColor: theme.colors.neutral.white,
         },
+        style,
       ]}
+      {...props}
     >
       {data.map((item, index) => {
         return (

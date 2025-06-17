@@ -27,7 +27,7 @@ export interface TextComponentProps extends TextProps {
    * - footer → 11px/15px/400 页脚样式
    */
   variant?: TextVariantType;
-
+  className?: string;
   /** 主题配置 */
   theme?: themeProp;
 }
@@ -43,7 +43,6 @@ const Text = ({
 
   return (
     <RNText
-      {...props}
       style={[
         {
           color: theme.colors?.neutral.disabled,
@@ -51,8 +50,8 @@ const Text = ({
         variantStyle,
         style,
       ]}
+      {...props}
     />
   );
 };
-
 export default Text;

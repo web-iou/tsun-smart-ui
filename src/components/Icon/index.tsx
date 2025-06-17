@@ -263,6 +263,7 @@ const Icon = ({
   name: IconName;
   size?: number;
   color?: string;
+  className?:string;
   style?: Omit<StyleProp<TextStyle>, "size" | "color">;
 } & TextProps) => {
   const glyph = glyphs.find((item) => item.name === name);
@@ -275,5 +276,4 @@ const Icon = ({
     </Text>
   );
 };
-
 export default Icon;
