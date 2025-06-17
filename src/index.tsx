@@ -51,6 +51,7 @@ export { default as TextInput } from "./components/TextInput";
 
 // 导出Cell组件
 export { default as Cell } from "./components/Cell";
+export type { DataItem as CellDataType } from "./components/Cell";
 
 // 导出Radio组件
 export { default as Radio } from "./components/Radio";

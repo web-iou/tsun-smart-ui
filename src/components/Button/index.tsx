@@ -16,7 +16,7 @@ import {
   getIconStyles,
   getPressedStyle,
 } from "./utils";
-import { type RefObject } from "react";
+import { useState, type RefObject } from "react";
 import { View } from "react-native";
 export type ButtonVariant = "primary" | "outline";
 export type ButtonSize = "large" | "medium";
@@ -48,7 +48,7 @@ const Button = ({
   ...props
 }: Props) => {
   const theme = useAppTheme(_initialTheme);
-
+  const [isPressed,setIsPressed] = useState(false);
   // 从主题中获取按钮颜色
   const colors = theme.colors.button;
 
@@ -70,14 +70,29 @@ const Button = ({
   return (
     <Pressable
       ref={ref}
+      onPressIn={() => {
+        setIsPressed(true);
+      }}
+      onPressOut={() => {
+        setIsPressed(false);
+      }}
       disabled={props.disabled || loading}
       className={className}
-      style={({ pressed }) => [
-        styles.container,
-        getButtonStyles({ ...commonParams, size }),
-        pressed && !loading && getPressedStyle(commonParams),
-        style,
-      ]}
+      // nativewind的babel预设静态编译后的js代码不支持
+      // style={({ pressed }) => [
+      //   styles.container,
+      //   getButtonStyles({ ...commonParams, size }),
+      //   pressed && !loading && getPressedStyle(commonParams),
+      //   style,
+      // ]}
+      style={
+        [
+          styles.container,
+          getButtonStyles({ ...commonParams, size }),
+          isPressed&& !loading && getPressedStyle(commonParams),
+          style
+        ]
+      }
       {...props}
     >
       {loading ? (

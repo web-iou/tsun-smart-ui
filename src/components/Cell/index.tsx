@@ -4,17 +4,17 @@ import Text from "../Text";
 import { useAppTheme } from "../Provider";
 import type { themeProp } from "../../theme";
 import Icon from "../Icon";
+export type DataItem = {
+  title: string;
+  description?: string;
+  left?: (size: number) => ReactNode;
+  right?: ReactNode;
+  onPress?: () => void;
+};
 type Props = {
   theme?: themeProp;
   size?: "large" | "medium";
-  arrow?: boolean;
-  data: {
-    title: string;
-    description?: string;
-    left?: (size: number) => ReactNode;
-    right?: ReactNode;
-    onPress?: () => void;
-  }[];
+  data: DataItem[];
   listItemStyle?: ViewStyle;
   style?: ViewStyle;
   className?: string;

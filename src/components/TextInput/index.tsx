@@ -2,6 +2,7 @@ import {
   TextInput as RNTextInput,
   StyleSheet,
   View,
+  type ViewStyle,
   type TextInputProps,
 } from "react-native";
 import { useAppTheme } from "../Provider";
@@ -18,6 +19,8 @@ export type Props = TextInputProps & {
   right?: ReactNode;
   ref?: RefObject<RNTextInput | null>;
   className?: string;
+  inputStyle?: TextInputProps["style"];
+  inputWrapperStyle?: ViewStyle;
 };
 
 const TextInput = ({
@@ -29,6 +32,8 @@ const TextInput = ({
   ref,
   showClearButton = false,
   className,
+  inputWrapperStyle,
+  inputStyle,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const theme = useAppTheme(initialTheme);
@@ -55,6 +60,7 @@ const TextInput = ({
               ? theme.colors.background.disabled
               : theme.colors.neutral.white,
           },
+          inputWrapperStyle,
         ]}
       >
         {left && <Icon name={left} size={16} style={styles.leftIcon} />}
@@ -62,7 +68,7 @@ const TextInput = ({
           readOnly={readOnly}
           {...props}
           ref={ref}
-          style={[styles.textInput, props.style]}
+          style={[styles.textInput, inputStyle]}
           placeholderTextColor={theme.colors.neutral.tip}
           clearButtonMode={showClearButton ? "while-editing" : "never"}
         />
