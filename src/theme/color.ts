@@ -34,6 +34,19 @@ export type DarkBrandColors = {
 
 /**
  * 按钮色彩配置 - Button Colors
+ * 
+ * @description
+ * 定义了三种类型按钮的颜色配置：
+ * 1. primary - 主要按钮：实心背景的按钮
+ * 2. outline - 线框按钮：带边框的透明背景按钮
+ * 3. text - 文本按钮：无边框无背景的纯文本按钮
+ * 
+ * 每种按钮都包含以下状态的颜色定义：
+ * - 正常状态
+ * - 按压状态 (pressed)
+ * - 禁用状态 (disabled)
+ * - 文本颜色
+ * - 禁用状态文本颜色
  */
 export interface ButtonColors {
   primary: {
@@ -62,6 +75,32 @@ export interface ButtonColors {
     /** 线框按钮文本色 @color #FF891F */
     text: string;
     /** 线框按钮禁用文本色 @color #FFD0A5 */
+    textDisabled: string;
+  };
+  text: {
+    /** 
+     * 文本按钮文本颜色
+     * @default #FF891F - 品牌橙色
+     * @description 按钮处于正常状态时的文本颜色
+     */
+    text: string;
+    /** 
+     * 文本按钮按压状态的背景色
+     * @default rgba(255, 137, 31, 0.12) - 半透明橙色
+     * @description 按钮被点击时的背景色，使用低透明度提供轻微的视觉反馈
+     */
+    pressed: string;
+    /** 
+     * 文本按钮禁用状态的背景色
+     * @default transparent - 透明
+     * @description 按钮处于禁用状态时的背景色，保持透明
+     */
+    disabled: string;
+    /** 
+     * 文本按钮禁用状态的文本颜色
+     * @default #FFE4CC - 浅橙色
+     * @description 按钮处于禁用状态时的文本颜色，使用较浅的颜色表示不可用
+     */
     textDisabled: string;
   };
 }
@@ -155,6 +194,12 @@ export const colors: ColorSystem = {
       text: "#FF891F", // 线框按钮文本色
       textDisabled: "#FFD0A5", // 线框按钮禁用文本色
     },
+    text: {
+      text: "#FF891F",
+      pressed: "rgba(255, 137, 31, 0.12)",
+      disabled: "transparent",
+      textDisabled: "#FFE4CC",
+    },
   },
   border: {
     primary: "#E6E6E6", // 边框色
@@ -210,20 +255,26 @@ export const darkColors: ColorSystem = {
   // 按钮颜色 - 深色主题
   button: {
     primary: {
-      background: "#EB882F", // 主要按钮背景色
-      pressed: "#D67C2B", // 主要按钮按压状态
-      disabled: "#69411F", // 深色主题下的禁用状态
-      text: "#FFFFFF", // 主要按钮文本色
-      textDisabled: "#999999", // 深色主题下的禁用文本色
+      background: "#EB882F", // 主要按钮背景色 - 深色主题橙色
+      pressed: "#D67C2B", // 主要按钮按压状态 - 深橙色
+      disabled: "#69411F", // 主要按钮禁用状态 - 暗褐色
+      text: "#FFFFFF", // 主要按钮文本色 - 白色
+      textDisabled: "#999999", // 主要按钮禁用文本色 - 灰色
     },
     outline: {
-      background: "transparent", // 线框按钮背景色
-      pressed: "#332414", // 深色主题下的按压状态
-      disabled: "transparent", // 线框按钮禁用背景
-      border: "#FF7A00", // 线框按钮边框色
-      borderDisabled: "#4D3521", // 深色主题下的禁用边框色
-      text: "#FF7A00", // 线框按钮文本色
-      textDisabled: "#666666", // 深色主题下的禁用文本色
+      background: "transparent", // 线框按钮背景色 - 透明
+      pressed: "#332414", // 线框按钮按压状态 - 深褐色
+      disabled: "transparent", // 线框按钮禁用背景 - 透明
+      border: "#FF7A00", // 线框按钮边框色 - 亮橙色
+      borderDisabled: "#4D3521", // 线框按钮禁用边框色 - 暗褐色
+      text: "#FF7A00", // 线框按钮文本色 - 亮橙色
+      textDisabled: "#666666", // 线框按钮禁用文本色 - 深灰色
+    },
+    text: {
+      text: "#FF7A00", // 文本按钮文本色 - 亮橙色
+      pressed: "rgba(255, 122, 0, 0.12)", // 文本按钮按压背景色 - 半透明橙色
+      disabled: "transparent", // 文本按钮禁用背景色 - 透明
+      textDisabled: "#4D3521", // 文本按钮禁用文本色 - 暗褐色
     },
   },
 
@@ -232,7 +283,7 @@ export const darkColors: ColorSystem = {
   },
   background: {
     disabled: "#292929",
-    primary: "#1C1D1F",
+    primary: "#121314",
   },
   // 中性色 - 深色主题
   neutral: {
@@ -241,7 +292,7 @@ export const darkColors: ColorSystem = {
     primary: "#8F8F8F", // 深色主题主要文本
     tip: "#595959", // 深色主题提示文本
     disabled: "#525252", // 深色主题禁用色
-    white: "#fff", // 深色主题"白色"实际为黑色
+    white: "#1C1D1F", // 深色主题"白色"实际为黑色
   },
   info: {
     primary: "#4797FF", // 蓝色

@@ -68,36 +68,44 @@ const Cell = ({
           >
             <View style={styles.leftContainer}>
               {item.left?.(size === "large" ? 36 : 20)}
-              <View>
+              <View style={styles.textContainer}>
                 <Text
                   variant="bodyStrong"
-                  style={{
-                    color: theme.colors.neutral.title,
-                  }}
+                  style={[
+                    styles.title,
+                    {
+                      color: theme.colors.neutral.title,
+                    },
+                  ]}
                 >
                   {item.title}
                 </Text>
                 {item.description && (
                   <Text
                     variant="caption"
-                    style={{
-                      color: theme.colors.neutral.secondaryTitle,
-                    }}
+                    style={[
+                      styles.description,
+                      {
+                        color: theme.colors.neutral.secondaryTitle,
+                      },
+                    ]}
                   >
                     {item.description}
                   </Text>
                 )}
               </View>
             </View>
-            {item.right ? (
-              item.right
-            ) : (
-              <Icon
-                size={10}
-                name="right"
-                color={theme.colors.neutral.primary}
-              />
-            )}
+            <View style={styles.rightContainer}>
+              {item.right ? (
+                item.right
+              ) : (
+                <Icon
+                  size={10}
+                  name="right"
+                  color={theme.colors.neutral.primary}
+                />
+              )}
+            </View>
           </Pressable>
         );
       })}
@@ -118,6 +126,21 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     columnGap: 12,
+    flex: 1,
+    marginRight: 12,
+  },
+  textContainer: {
+    flex: 1,
+    minWidth: 0,
+  },
+  title: {
+    flexShrink: 1,
+  },
+  description: {
+    flexShrink: 1,
+  },
+  rightContainer: {
+    flexShrink: 0,
   },
 });
 export default Cell;

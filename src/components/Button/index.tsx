@@ -18,8 +18,8 @@ import {
 } from "./utils";
 import { useState, type RefObject } from "react";
 import { View } from "react-native";
-export type ButtonVariant = "primary" | "outline";
-export type ButtonSize = "large" | "medium";
+export type ButtonVariant = "primary" | "outline" | "text";
+export type ButtonSize = "large" | "medium" | "small";
 
 type Props = PressableProps & {
   title: string;
@@ -48,7 +48,7 @@ const Button = ({
   ...props
 }: Props) => {
   const theme = useAppTheme(_initialTheme);
-  const [isPressed,setIsPressed] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
   // 从主题中获取按钮颜色
   const colors = theme.colors.button;
 
@@ -67,6 +67,15 @@ const Button = ({
     return colors.primary.text;
   };
 
+  const containerStyle = StyleSheet.flatten([
+    styles.container,
+    variant !== 'text' && styles.containerPadding,
+    getButtonStyles({ ...commonParams, size }),
+    isPressed && !loading && variant !== 'text' && getPressedStyle(commonParams),
+    // text类型按钮按压时使用透明度
+    isPressed && !loading && variant === 'text' && { opacity: 0.7 },
+    style,
+  ]);  
   return (
     <Pressable
       ref={ref}
@@ -77,22 +86,8 @@ const Button = ({
         setIsPressed(false);
       }}
       disabled={props.disabled || loading}
+      style={containerStyle}
       className={className}
-      // nativewind的babel预设静态编译后的js代码不支持
-      // style={({ pressed }) => [
-      //   styles.container,
-      //   getButtonStyles({ ...commonParams, size }),
-      //   pressed && !loading && getPressedStyle(commonParams),
-      //   style,
-      // ]}
-      style={
-        [
-          styles.container,
-          getButtonStyles({ ...commonParams, size }),
-          isPressed&& !loading && getPressedStyle(commonParams),
-          style
-        ]
-      }
       {...props}
     >
       {loading ? (
@@ -105,13 +100,20 @@ const Button = ({
         icon && (
           <Icon
             name={icon}
-            style={[styles.leftIcon, getIconStyles({ ...commonParams, size })]}
+            style={[
+              getIconStyles({
+                ...commonParams,
+                size,
+                //@ts-ignore
+                reverse: containerStyle?.flexDirection === "row-reverse",
+              }),
+            ]}
           />
         )
       )}
 
       <Text
-        variant="bodyStrong"
+        variant={size === "small" ? "body" : "bodyStrong"}
         style={[getTextStyles(commonParams), textStyle]}
       >
         {title}
@@ -123,14 +125,12 @@ const Button = ({
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    width: "100%",
     justifyContent: "center",
     borderRadius: 100,
     flexDirection: "row",
-    paddingHorizontal: 32,
   },
-  leftIcon: {
-    marginRight: 8,
+  containerPadding: {
+    paddingHorizontal: 32,
   },
   loadingIndicator: {
     marginRight: 8,

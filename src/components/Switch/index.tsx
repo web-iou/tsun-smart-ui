@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import  { useRef, useEffect } from "react";
 import {
   Pressable,
   Animated,
@@ -32,7 +32,7 @@ export interface SwitchProps extends Omit<ViewProps, "children"> {
   className?: string;
 }
 
-const Switch: React.FC<SwitchProps> = ({
+const Switch= ({
   value,
   onValueChange,
   disabled = false,
@@ -43,7 +43,7 @@ const Switch: React.FC<SwitchProps> = ({
   theme: initialTheme,
   style,
   ...props
-}) => {
+}:SwitchProps) => {
   const theme = useAppTheme(initialTheme);
   const animatedValue = useRef(new Animated.Value(value ? 1 : 0)).current;
 
@@ -188,8 +188,6 @@ const styles = StyleSheet.create({
   },
   loading: {
     position: "absolute",
-    // width: 16,
-    // height: 16,
   },
 });
 

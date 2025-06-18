@@ -50,6 +50,7 @@ const Search = ({ theme: initialTheme, style, className, ...props }: Props) => {
       <TextInput
         left="search"
         showClearButton
+        className=" flex-1"
         ref={textInputRef}
         onBlur={() => {
           setOnFocus(false);
@@ -84,8 +85,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    flex: 1,
-    marginTop: 20,
   },
   text: {
     marginLeft: 16,

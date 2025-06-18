@@ -4,7 +4,7 @@ import {
   type TextProps,
   type TextStyle,
 } from "react-native";
-const glyphs = [
+export const glyphs = [
   {
     icon_id: "44582611",
     name: "error",

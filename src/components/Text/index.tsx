@@ -45,7 +45,7 @@ const Text = ({
     <RNText
       style={[
         {
-          color: theme.colors?.neutral.disabled,
+          color: theme.colors?.neutral.title,
         },
         variantStyle,
         style,

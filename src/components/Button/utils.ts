@@ -18,6 +18,12 @@ interface ButtonColors {
     text: string;
     textDisabled: string;
   };
+  text: {
+    text: string;
+    pressed: string;
+    disabled: string;
+    textDisabled: string;
+  };
 }
 
 // 获取按钮样式参数类型
@@ -41,6 +47,7 @@ interface GetIconStylesParams {
   size: ButtonSize;
   disabled: boolean;
   colors: ButtonColors;
+  reverse: boolean;
 }
 
 // 获取按压状态样式参数类型
@@ -60,8 +67,16 @@ export const getButtonStyles = ({
   colors,
 }: GetButtonStylesParams) => {
   const baseStyle = {
-    height: size === "large" ? 48 : 40,
+    height: size === "large" ? 48 : size === "medium" ? 40 : 32,
   };
+
+  if (variant === "text") {
+    return {
+      ...baseStyle,
+      backgroundColor: "transparent",
+      alignSelf: "flex-start",
+    };
+  }
 
   if (variant === "outline") {
     return {
@@ -93,6 +108,12 @@ export const getTextStyles = ({
   disabled,
   colors,
 }: GetTextStylesParams) => {
+  if (variant === "text") {
+    return {
+      color: disabled ? colors.text.textDisabled : colors.text.text,
+    };
+  }
+
   if (variant === "outline") {
     return {
       color: disabled ? colors.outline.textDisabled : colors.outline.text,
@@ -112,8 +133,17 @@ export const getIconStyles = ({
   size,
   disabled,
   colors,
+  reverse = false,
 }: GetIconStylesParams) => {
-  const baseIconSize = size === "large" ? 24 : 16;
+  const baseIconSize = size === "large" ? 24 : size === "medium" ? 16 : 12;
+  if (variant === "text") {
+    return {
+      color: disabled ? colors.text.textDisabled : colors.text.text,
+      fontSize: baseIconSize,
+      marginLeft: reverse ? 8 : 0,
+      marginRight: reverse ? 0 : 8,
+    };
+  }
 
   if (variant === "outline") {
     return {
@@ -137,6 +167,10 @@ export const getPressedStyle = ({
   colors,
 }: GetPressedStyleParams) => {
   if (disabled) return {};
+
+  if (variant === "text") {
+    return { backgroundColor: colors.text.pressed };
+  }
 
   if (variant === "outline") {
     return { backgroundColor: colors.outline.pressed };

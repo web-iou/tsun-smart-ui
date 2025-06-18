@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   label: {
     alignSelf: "flex-start",
-    marginBottom: 8.5,
+    marginBottom: 8,
   },
   right: {
     marginRight: 12,

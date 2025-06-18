@@ -34,6 +34,7 @@ export type { ButtonVariant, ButtonSize } from "./components/Button";
 
 // 导出Icon组件
 export { default as Icon } from "./components/Icon";
+export { glyphs } from "./components/Icon";
 
 // 导出Tag组件
 export { default as Tag } from "./components/Tag";
@@ -62,6 +63,9 @@ export type {
   CodeTextInputProps,
   CodeTextInputI18n,
 } from "./components/CodeTextInput";
+
+// 导出Card组件
+export { default as Card } from "./components/Card";
 
 // 导出hooks
 export { useCountdown } from "./hooks";
