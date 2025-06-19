@@ -37,6 +37,9 @@ const TextInput = ({
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const theme = useAppTheme(initialTheme);
+  const hostTextInputStyle: Props["inputStyle"] = {
+    color: theme.colors.neutral.title,
+  };
   return (
     <View className={className}>
       {label && (
@@ -63,12 +66,18 @@ const TextInput = ({
           inputWrapperStyle,
         ]}
       >
-        {left && <Icon name={left} size={16} style={styles.leftIcon} />}
+        {left && (
+          <Icon
+            name={left}
+            size={16}
+            style={[styles.leftIcon, hostTextInputStyle]}
+          />
+        )}
         <RNTextInput
           readOnly={readOnly}
           {...props}
           ref={ref}
-          style={[styles.textInput, inputStyle]}
+          style={[styles.textInput, hostTextInputStyle, inputStyle]}
           placeholderTextColor={theme.colors.neutral.tip}
           clearButtonMode={showClearButton ? "while-editing" : "never"}
         />

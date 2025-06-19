@@ -4,6 +4,8 @@ import {
   type TextProps,
   type TextStyle,
 } from "react-native";
+import { useAppTheme } from "../Provider";
+import { themeProp } from "../../theme";
 export const glyphs = [
   {
     icon_id: "44582611",
@@ -258,18 +260,28 @@ const Icon = ({
   size = 24,
   color,
   style,
+  theme: initialTheme,
   ...props
 }: {
   name: IconName;
   size?: number;
   color?: string;
-  className?:string;
+  className?: string;
+  theme?: themeProp;
   style?: Omit<StyleProp<TextStyle>, "size" | "color">;
 } & TextProps) => {
   const glyph = glyphs.find((item) => item.name === name);
+  const theme = useAppTheme(initialTheme);
   return (
     <Text
-      style={[{ fontSize: size, color, fontFamily: "iconfont" }, style]}
+      style={[
+        {
+          fontSize: size,
+          color: color ?? theme.colors.neutral.title,
+          fontFamily: "iconfont",
+        },
+        style,
+      ]}
       {...props}
     >
       {String.fromCodePoint(glyph?.unicode_decimal!)}
