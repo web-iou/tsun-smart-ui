@@ -9,7 +9,7 @@ import {
 import Text from "../Text";
 import type { themeProp } from "../../theme";
 import { useAppTheme } from "../Provider";
-import Icon, { type IconName } from "../Icon";
+import Icon, { type DefaultIconName } from "../Icon";
 import {
   getButtonStyles,
   getTextStyles,
@@ -25,7 +25,7 @@ type Props = PressableProps & {
   title: string;
   theme?: themeProp;
   style?: ViewStyle;
-  icon?: IconName;
+  icon?: DefaultIconName;
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;

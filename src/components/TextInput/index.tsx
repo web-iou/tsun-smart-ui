@@ -8,13 +8,13 @@ import {
 import { useAppTheme } from "../Provider";
 import type { themeProp } from "../../theme";
 import Text from "../Text";
-import type { IconName } from "../Icon";
+import type { DefaultIconName } from "../Icon";
 import Icon from "../Icon";
 import type { ReactNode, RefObject } from "react";
 export type Props = TextInputProps & {
   theme?: themeProp;
   label?: string;
-  left?: IconName;
+  left?: DefaultIconName;
   showClearButton?: boolean;
   right?: ReactNode;
   ref?: RefObject<RNTextInput | null>;

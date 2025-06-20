@@ -34,7 +34,6 @@ export type { ButtonVariant, ButtonSize } from "./components/Button";
 
 // 导出Icon组件
 export { default as Icon } from "./components/Icon";
-export { glyphs } from "./components/Icon";
 
 // 导出Tag组件
 export { default as Tag } from "./components/Tag";

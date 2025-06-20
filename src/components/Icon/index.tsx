@@ -6,272 +6,227 @@ import {
 } from "react-native";
 import { useAppTheme } from "../Provider";
 import { themeProp } from "../../theme";
-export const glyphs = [
-  {
-    icon_id: "44582611",
-    name: "error",
-    font_class: "a-error1",
-    unicode: "e694",
-    unicode_decimal: 59028,
-  },
-  {
-    icon_id: "44582606",
-    name: "success",
-    font_class: "a-success1",
-    unicode: "e695",
-    unicode_decimal: 59029,
-  },
-  {
-    icon_id: "44545521",
-    name: "Safety",
-    font_class: "yanzhengma",
-    unicode: "e693",
-    unicode_decimal: 59027,
-  },
-  {
-    icon_id: "44543246",
-    name: "more",
-    font_class: "gengduo",
-    unicode: "e603",
-    unicode_decimal: 58883,
-  },
-  {
-    icon_id: "44532750",
-    name: "back",
-    font_class: "back",
-    unicode: "e690",
-    unicode_decimal: 59024,
-  },
-  {
-    icon_id: "44531749",
-    name: "close",
-    font_class: "close",
-    unicode: "e684",
-    unicode_decimal: 59012,
-  },
-  {
-    icon_id: "44531667",
-    name: "flashlight",
-    font_class: "flashlight",
-    unicode: "e68a",
-    unicode_decimal: 59018,
-  },
-  {
-    icon_id: "44531662",
-    name: "flashlight-off",
-    font_class: "flashlight-off",
-    unicode: "e68e",
-    unicode_decimal: 59022,
-  },
-  {
-    icon_id: "44531661",
-    name: "edit",
-    font_class: "edit",
-    unicode: "e68f",
-    unicode_decimal: 59023,
-  },
-  {
-    icon_id: "44531663",
-    name: "image",
-    font_class: "image",
-    unicode: "e688",
-    unicode_decimal: 59016,
-  },
-  {
-    icon_id: "44531498",
-    name: "camera",
-    font_class: "Camera",
-    unicode: "e687",
-    unicode_decimal: 59015,
-  },
-  {
-    icon_id: "44498270",
-    name: "add",
-    font_class: "zengjia",
-    unicode: "e67d",
-    unicode_decimal: 59005,
-  },
-  {
-    icon_id: "44498183",
-    name: "network",
-    font_class: "wangluopeizhi1",
-    unicode: "e692",
-    unicode_decimal: 59026,
-  },
-  {
-    icon_id: "44497573",
-    name: "email",
-    font_class: "youxiang1",
-    unicode: "e691",
-    unicode_decimal: 59025,
-  },
-  {
-    icon_id: "44497522",
-    name: "repassword",
-    font_class: "zaicishurumima1",
-    unicode: "e68c",
-    unicode_decimal: 59020,
-  },
-  {
-    icon_id: "44497518",
-    name: "nickname",
-    font_class: "nicheng1",
-    unicode: "e68d",
-    unicode_decimal: 59021,
-  },
-  {
-    icon_id: "44497244",
-    name: "password",
-    font_class: "mima1",
-    unicode: "e68b",
-    unicode_decimal: 59019,
-  },
-  {
-    icon_id: "44497123",
-    name: "right",
-    font_class: "fanhui1",
-    unicode: "e686",
-    unicode_decimal: 59014,
-  },
-  {
-    icon_id: "44497119",
-    name: "pull",
-    font_class: "a-huaban24",
-    unicode: "e689",
-    unicode_decimal: 59017,
-  },
-  {
-    icon_id: "44496210",
-    name: "search",
-    font_class: "search-2",
-    unicode: "e681",
-    unicode_decimal: 59009,
-  },
-  {
-    icon_id: "44496211",
-    name: "owner",
-    font_class: "yezhu",
-    unicode: "e682",
-    unicode_decimal: 59010,
-  },
-  {
-    icon_id: "44496212",
-    name: "timezone",
-    font_class: "shiqu",
-    unicode: "e683",
-    unicode_decimal: 59011,
-  },
-  {
-    icon_id: "44496214",
-    name: "warning",
-    font_class: "zhuyi",
-    unicode: "e685",
-    unicode_decimal: 59013,
-  },
-  {
-    icon_id: "44496193",
-    name: "company",
-    font_class: "gongsimingcheng",
-    unicode: "e675",
-    unicode_decimal: 58997,
-  },
-  {
-    icon_id: "44496196",
-    name: "instanller-review",
-    font_class: "renzheng-yunyingshangrenzheng",
-    unicode: "e678",
-    unicode_decimal: 59000,
-  },
-  {
-    icon_id: "44496197",
-    name: "earth",
-    font_class: "dangqianzhandian",
-    unicode: "e679",
-    unicode_decimal: 59001,
-  },
-  {
-    icon_id: "44496198",
-    name: "code",
-    font_class: "bianma",
-    unicode: "e67a",
-    unicode_decimal: 59002,
-  },
-  {
-    icon_id: "44496199",
-    name: "area",
-    font_class: "diqu",
-    unicode: "e67b",
-    unicode_decimal: 59003,
-  },
-  {
-    icon_id: "44496201",
-    name: "check-circle",
-    font_class: "xuanzhong-1",
-    unicode: "e67c",
-    unicode_decimal: 59004,
-  },
-  {
-    icon_id: "44496203",
-    name: "eye",
-    font_class: "yanjing1",
-    unicode: "e67e",
-    unicode_decimal: 59006,
-  },
-  {
-    icon_id: "44496205",
-    name: "check",
-    font_class: "xuanzhong",
-    unicode: "e67f",
-    unicode_decimal: 59007,
-  },
-  {
-    icon_id: "44496209",
-    name: "refresh",
-    font_class: "shuaxin",
-    unicode: "e680",
-    unicode_decimal: 59008,
-  },
-  {
-    icon_id: "44494515",
-    name: "eye-off",
-    font_class: "biyan1",
-    unicode: "e671",
-    unicode_decimal: 58993,
-  },
-  {
-    icon_id: "44493679",
-    name: "installer",
-    font_class: "anzhuangshang",
-    unicode: "e66d",
-    unicode_decimal: 58989,
-  },
-  {
-    icon_id: "44493680",
-    name: "device-manage",
-    font_class: "shebeiguanli",
-    unicode: "e66e",
-    unicode_decimal: 58990,
-  },
-] as const;
-export type IconName = (typeof glyphs)[number]["name"];
 
-const Icon = ({
+export const defaultGlyphs = {
+  Safety: {
+    unicode: 57345,
+    hex: "\\E001",
+    codePoint: "U+E001",
+  },
+  add: {
+    unicode: 57346,
+    hex: "\\E002",
+    codePoint: "U+E002",
+  },
+  add1: {
+    unicode: 57347,
+    hex: "\\E003",
+    codePoint: "U+E003",
+  },
+  area: {
+    unicode: 57348,
+    hex: "\\E004",
+    codePoint: "U+E004",
+  },
+  avatar: {
+    unicode: 57349,
+    hex: "\\E005",
+    codePoint: "U+E005",
+  },
+  back: {
+    unicode: 57350,
+    hex: "\\E006",
+    codePoint: "U+E006",
+  },
+  camera: {
+    unicode: 57351,
+    hex: "\\E007",
+    codePoint: "U+E007",
+  },
+  check: {
+    unicode: 57352,
+    hex: "\\E008",
+    codePoint: "U+E008",
+  },
+  "check-circle": {
+    unicode: 57353,
+    hex: "\\E009",
+    codePoint: "U+E009",
+  },
+  close: {
+    unicode: 57354,
+    hex: "\\E00A",
+    codePoint: "U+E00A",
+  },
+  code: {
+    unicode: 57355,
+    hex: "\\E00B",
+    codePoint: "U+E00B",
+  },
+  company: {
+    unicode: 57356,
+    hex: "\\E00C",
+    codePoint: "U+E00C",
+  },
+  "device-manage": {
+    unicode: 57357,
+    hex: "\\E00D",
+    codePoint: "U+E00D",
+  },
+  earth: {
+    unicode: 57358,
+    hex: "\\E00E",
+    codePoint: "U+E00E",
+  },
+  edit: {
+    unicode: 57359,
+    hex: "\\E00F",
+    codePoint: "U+E00F",
+  },
+  email: {
+    unicode: 57360,
+    hex: "\\E010",
+    codePoint: "U+E010",
+  },
+  error: {
+    unicode: 57361,
+    hex: "\\E011",
+    codePoint: "U+E011",
+  },
+  eye: {
+    unicode: 57362,
+    hex: "\\E012",
+    codePoint: "U+E012",
+  },
+  "eye-off": {
+    unicode: 57363,
+    hex: "\\E013",
+    codePoint: "U+E013",
+  },
+  flashlight: {
+    unicode: 57364,
+    hex: "\\E014",
+    codePoint: "U+E014",
+  },
+  "flashlight-off": {
+    unicode: 57365,
+    hex: "\\E015",
+    codePoint: "U+E015",
+  },
+  image: {
+    unicode: 57366,
+    hex: "\\E016",
+    codePoint: "U+E016",
+  },
+  installer: {
+    unicode: 57367,
+    hex: "\\E017",
+    codePoint: "U+E017",
+  },
+  "instanller-review": {
+    unicode: 57368,
+    hex: "\\E018",
+    codePoint: "U+E018",
+  },
+  more: {
+    unicode: 57369,
+    hex: "\\E019",
+    codePoint: "U+E019",
+  },
+  network: {
+    unicode: 57370,
+    hex: "\\E01A",
+    codePoint: "U+E01A",
+  },
+  nickname: {
+    unicode: 57371,
+    hex: "\\E01B",
+    codePoint: "U+E01B",
+  },
+  owner: {
+    unicode: 57372,
+    hex: "\\E01C",
+    codePoint: "U+E01C",
+  },
+  password: {
+    unicode: 57373,
+    hex: "\\E01D",
+    codePoint: "U+E01D",
+  },
+  pull: {
+    unicode: 57374,
+    hex: "\\E01E",
+    codePoint: "U+E01E",
+  },
+  refresh: {
+    unicode: 57375,
+    hex: "\\E01F",
+    codePoint: "U+E01F",
+  },
+  repassword: {
+    unicode: 57376,
+    hex: "\\E020",
+    codePoint: "U+E020",
+  },
+  right: {
+    unicode: 57377,
+    hex: "\\E021",
+    codePoint: "U+E021",
+  },
+  search: {
+    unicode: 57378,
+    hex: "\\E022",
+    codePoint: "U+E022",
+  },
+  success: {
+    unicode: 57379,
+    hex: "\\E023",
+    codePoint: "U+E023",
+  },
+  timezone: {
+    unicode: 57380,
+    hex: "\\E024",
+    codePoint: "U+E024",
+  },
+  warning: {
+    unicode: 57381,
+    hex: "\\E025",
+    codePoint: "U+E025",
+  },
+};
+
+export type DefaultIconName = keyof typeof defaultGlyphs;
+type glyphsType=Record<string, (typeof defaultGlyphs)["add"]>
+interface IconProps<T extends glyphsType>
+  extends TextProps {
+  name: DefaultIconName | keyof T;
+  size?: number;
+  color?: string;
+  className?: string;
+  customGlyphs?: T;
+  theme?: themeProp;
+  style?: Omit<StyleProp<TextStyle>, "size" | "color">;
+}
+
+const Icon = <T extends glyphsType>({
   name,
   size = 24,
   color,
   style,
   theme: initialTheme,
+  customGlyphs,
   ...props
-}: {
-  name: IconName;
-  size?: number;
-  color?: string;
-  className?: string;
-  theme?: themeProp;
-  style?: Omit<StyleProp<TextStyle>, "size" | "color">;
-} & TextProps) => {
-  const glyph = glyphs.find((item) => item.name === name);
+}: IconProps<T>) => {
+  const allGlyphs = {
+    ...defaultGlyphs,
+    ...customGlyphs,
+  };
   const theme = useAppTheme(initialTheme);
+  const unicode = allGlyphs[name as unknown as keyof typeof allGlyphs]?.unicode;
+  if (!unicode) {
+    return null;
+  }
+
   return (
     <Text
       style={[
@@ -284,8 +239,9 @@ const Icon = ({
       ]}
       {...props}
     >
-      {String.fromCodePoint(glyph?.unicode_decimal!)}
+      {String.fromCodePoint(unicode)}
     </Text>
   );
 };
+
 export default Icon;
