@@ -4,6 +4,7 @@ import {
   View,
   type ViewStyle,
   type TextInputProps,
+  Pressable,
 } from "react-native";
 import { useAppTheme } from "../Provider";
 import type { themeProp } from "../../theme";
@@ -34,6 +35,7 @@ const TextInput = ({
   className,
   inputWrapperStyle,
   inputStyle,
+  onPress,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const theme = useAppTheme(initialTheme);
@@ -55,7 +57,8 @@ const TextInput = ({
           {label}
         </Text>
       )}
-      <View
+      <Pressable
+        onPress={onPress}
         style={[
           styles.container,
           {
@@ -82,7 +85,7 @@ const TextInput = ({
           clearButtonMode={showClearButton ? "while-editing" : "never"}
         />
         {right}
-      </View>
+      </Pressable>
     </View>
   );
 };
