@@ -78,6 +78,7 @@ const TextInput = ({
         )}
         <RNTextInput
           readOnly={readOnly}
+          pointerEvents={readOnly || !props.editable ? "none" : "auto"}
           {...props}
           ref={ref}
           style={[styles.textInput, hostTextInputStyle, inputStyle]}
