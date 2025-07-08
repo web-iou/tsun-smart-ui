@@ -97,7 +97,7 @@ const Card = ({
       <View style={headerStyle}>
         <View style={styles.titleContent}>
           {typeof title === "string" ? (
-            <Text style={titleTextStyle}>{title}</Text>
+            <Text variant='cardTitle' style={titleTextStyle}>{title}</Text>
           ) : (
             title
           )}

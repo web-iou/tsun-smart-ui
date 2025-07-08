@@ -199,7 +199,7 @@ export type DefaultIconName = keyof typeof defaultGlyphs;
 type glyphsType=Record<string, (typeof defaultGlyphs)["add"]>
 interface IconProps<T extends glyphsType>
   extends TextProps {
-  name: DefaultIconName | keyof T;
+  name: DefaultIconName;
   size?: number;
   color?: string;
   className?: string;
