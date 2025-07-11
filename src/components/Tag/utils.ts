@@ -1,5 +1,5 @@
 // Tag类型定义
-export type TagType = "success" | "error" | "info" | "warning";
+export type TagType = "success" | "error" | "info" | "warning" | "disabled";
 
 // 颜色映射接口
 interface TagColors {
@@ -38,6 +38,10 @@ export const getTagColors = (type: TagType, colors: ThemeColors): TagColors => {
     warning: {
       backgroundColor: colors.warning.light,
       textColor: colors.warning.primary,
+    },
+    disabled: {
+      backgroundColor: colors.disabled.light,
+      textColor: colors.disabled.primary,
     },
   };
 

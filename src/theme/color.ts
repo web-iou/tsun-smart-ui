@@ -164,6 +164,7 @@ export interface ColorSystem {
   success: FunctionalColors;
   error: FunctionalColors;
   warning: FunctionalColors;
+  disabled: FunctionalColors;
 }
 
 // 主题色彩配置
@@ -237,6 +238,10 @@ export const colors: ColorSystem = {
   warning: {
     primary: "#FF9500", // 警告色
     light: "#FFF7E6", // 浅黄
+  },
+  disabled: {
+    primary: "#BFBFBF", // 禁用色
+    light: "#F0F0F0", // 浅禁用色
   },
 };
 
@@ -312,6 +317,10 @@ export const darkColors: ColorSystem = {
   warning: {
     primary: "#EB882F", // 警告色
     light: "#FFF7E6", // 浅黄
+  },
+  disabled: {
+    primary: "#BFBFBF", // 禁用色
+    light: "#F0F0F0", // 浅禁用色
   },
 };
 
