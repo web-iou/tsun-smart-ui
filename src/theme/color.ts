@@ -319,8 +319,8 @@ export const darkColors: ColorSystem = {
     light: "#FFF7E6", // 浅黄
   },
   disabled: {
-    primary: "#BFBFBF", // 禁用色
-    light: "#F0F0F0", // 浅禁用色
+    primary: "#595959", // 禁用色
+    light: "#292929", // 浅禁用色
   },
 };
 

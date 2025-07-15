@@ -101,6 +101,7 @@ const Cell = ({
               ) : (
                 <Icon
                   size={10}
+                  //@ts-ignore
                   name="right"
                   color={theme.colors.neutral.primary}
                 />

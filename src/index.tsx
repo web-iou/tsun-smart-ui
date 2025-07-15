@@ -4,7 +4,6 @@
 export { default as colors, darkColors } from "./theme/color";
 export { lightTheme, darkTheme } from "./theme";
 export { default as typographyStyles } from "./theme/font";
-
 // 导出主题类型定义
 export type {
   ColorSystem,
@@ -33,8 +32,8 @@ export { default as Button } from "./components/Button";
 export type { ButtonVariant, ButtonSize } from "./components/Button";
 
 // 导出Icon组件
-export { default as Icon } from "./components/Icon";
-
+export { default as Icon, getGlyph } from "./components/Icon";
+export type { IconProps } from "./components/Icon";
 // 导出Tag组件
 export { default as Tag } from "./components/Tag";
 export type { TagType } from "./components/Tag/utils";

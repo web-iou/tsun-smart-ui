@@ -69,13 +69,16 @@ const Button = ({
 
   const containerStyle = StyleSheet.flatten([
     styles.container,
-    variant !== 'text' && styles.containerPadding,
+    variant !== "text" && styles.containerPadding,
     getButtonStyles({ ...commonParams, size }),
-    isPressed && !loading && variant !== 'text' && getPressedStyle(commonParams),
+    isPressed &&
+      !loading &&
+      variant !== "text" &&
+      getPressedStyle(commonParams),
     // text类型按钮按压时使用透明度
-    isPressed && !loading && variant === 'text' && { opacity: 0.7 },
+    isPressed && !loading && variant === "text" && { opacity: 0.7 },
     style,
-  ]);  
+  ]);
   return (
     <Pressable
       ref={ref}
@@ -99,6 +102,7 @@ const Button = ({
       ) : (
         icon && (
           <Icon
+            //@ts-ignore
             name={icon}
             style={[
               getIconStyles({
