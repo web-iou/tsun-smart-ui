@@ -32,7 +32,7 @@ export { default as Button } from "./components/Button";
 export type { ButtonVariant, ButtonSize } from "./components/Button";
 
 // 导出Icon组件
-export { default as Icon, getGlyph } from "./components/Icon";
+export { default as Icon, setDefaultGlyphs } from "./components/Icon";
 export type { IconProps } from "./components/Icon";
 // 导出Tag组件
 export { default as Tag } from "./components/Tag";

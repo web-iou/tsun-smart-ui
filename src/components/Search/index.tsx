@@ -71,7 +71,6 @@ const Search = ({ theme: initialTheme, style, className, ...props }: Props) => {
     <View style={[styles.container, style]} className={className}>
       <View style={styles.inputContainer}>
         <TextInput
-          //@ts-ignore
           left="search"
           showClearButton
           style={styles.textInput}

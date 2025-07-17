@@ -71,7 +71,6 @@ const TextInput = ({
       >
         {left && (
           <Icon
-            //@ts-ignore
             name={left}
             size={16}
             style={[styles.leftIcon, hostTextInputStyle]}

@@ -102,7 +102,6 @@ const Button = ({
       ) : (
         icon && (
           <Icon
-            //@ts-ignore
             name={icon}
             style={[
               getIconStyles({
