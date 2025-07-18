@@ -177,7 +177,8 @@ const Icon = ({
   ...props
 }: IconProps) => {
   const theme = useAppTheme(initialTheme);
-  const unicode = defaultGlyphs[name]?.unicode;
+  //@ts-ignore
+  const unicode = defaultGlyphs[name ?? (props?.extraName)]?.unicode;
   if (!unicode) {
     return null;
   }
