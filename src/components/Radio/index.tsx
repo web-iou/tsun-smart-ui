@@ -75,7 +75,7 @@ const Radio = <T extends readonly DataItem[]>({
             </Text>
             {value === item.value && (
               <Icon
-                name="check"
+                defaultName="check"
                 size={20}
                 color={theme.colors?.brand?.primary}
               />

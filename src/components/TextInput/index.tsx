@@ -71,7 +71,7 @@ const TextInput = ({
       >
         {left && (
           <Icon
-            name={left}
+            defaultName={left}
             size={16}
             style={[styles.leftIcon, hostTextInputStyle]}
           />

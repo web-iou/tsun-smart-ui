@@ -102,7 +102,7 @@ const Button = ({
       ) : (
         icon && (
           <Icon
-            name={icon}
+            defaultName={icon}
             style={[
               getIconStyles({
                 ...commonParams,

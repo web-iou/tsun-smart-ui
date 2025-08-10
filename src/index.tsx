@@ -66,5 +66,5 @@ export type {
 export { default as Card } from "./components/Card";
 
 // 导出hooks
-export { useCountdown } from "./hooks";
+export { useCountdown, useUpload, useThrottleFn } from "./hooks";
 export type { CountdownOptions, CountdownResult } from "./hooks";

@@ -165,11 +165,11 @@ export interface IconProps extends TextProps {
   className?: string;
   theme?: themeProp;
   style?: Omit<StyleProp<TextStyle>, "size" | "color">;
-  name: DefaultIconName;
+  defaultName?: DefaultIconName;
 }
 
 const Icon = ({
-  name,
+  defaultName,
   size = 24,
   color,
   style,
@@ -178,7 +178,7 @@ const Icon = ({
 }: IconProps) => {
   const theme = useAppTheme(initialTheme);
   //@ts-ignore
-  const unicode = defaultGlyphs[name ?? (props?.extraName)]?.unicode;
+  const unicode = defaultGlyphs[defaultName ?? (props?.name)]?.unicode;
   if (!unicode) {
     return null;
   }
