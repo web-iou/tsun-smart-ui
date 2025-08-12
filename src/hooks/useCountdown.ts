@@ -33,11 +33,11 @@ const calcLeft = (target?: Date | number | string): number => {
 
 const parseMs = (milliseconds: number) => {
   return {
-    days: Math.floor(milliseconds / 86400000),
-    hours: Math.floor(milliseconds / 3600000) % 24,
-    minutes: Math.floor(milliseconds / 60000) % 60,
+    days: Math.floor(milliseconds / (24 * 60 * 60 * 1000)),
+    hours: Math.floor(milliseconds / (60 * 60 * 1000)),
+    minutes: Math.floor(milliseconds / (60 * 1000)),
     seconds: Math.floor(milliseconds / 1000),
-    milliseconds: Math.floor(milliseconds) % 1000,
+    milliseconds: Math.floor(milliseconds),
   };
 };
 
