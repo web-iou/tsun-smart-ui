@@ -36,6 +36,7 @@ const TextInput = ({
   inputWrapperStyle,
   inputStyle,
   onPress,
+  maxLength = 25,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const theme = useAppTheme(initialTheme);
@@ -81,6 +82,7 @@ const TextInput = ({
           pointerEvents={
             readOnly || !(props.editable ?? true) ? "none" : "auto"
           }
+          maxLength={maxLength}
           {...props}
           ref={ref}
           style={[styles.textInput, hostTextInputStyle, inputStyle]}
@@ -105,6 +107,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 1,
+    textAlignVertical: "center",
   },
   label: {
     alignSelf: "flex-start",

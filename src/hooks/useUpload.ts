@@ -31,11 +31,6 @@ export default function useUpload<T = any>(options: UploadOptions) {
           }
         };
 
-        xhr.onloadstart = () => {
-          setUploading(true);
-          setProgress(0);
-        };
-
         xhr.onload = () => {
           setUploading(false);
           setProgress(100); // 上传完成
@@ -55,6 +50,9 @@ export default function useUpload<T = any>(options: UploadOptions) {
         const formData = new FormData();
         formData.append(name, file);
         xhr.send(formData);
+
+        setUploading(true);
+        setProgress(0);
       });
     },
     [apiUrl, name, headers],
