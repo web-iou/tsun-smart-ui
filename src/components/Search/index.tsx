@@ -17,6 +17,7 @@ type Props = TextInputProps & {
   theme?: themeProp;
   style?: ViewStyle;
   className?: string;
+  cancelText?: string;
 };
 
 // 确保 Android 启用布局动画
@@ -46,7 +47,13 @@ const searchAnimation = {
   },
 };
 
-const Search = ({ theme: initialTheme, style, className, ...props }: Props) => {
+const Search = ({
+  theme: initialTheme,
+  style,
+  className,
+  cancelText,
+  ...props
+}: Props) => {
   const theme = useAppTheme(initialTheme);
   const [onFocus, setOnFocus] = useState(false);
   const textInputRef = useRef<RNTextInput>(null);
@@ -92,7 +99,7 @@ const Search = ({ theme: initialTheme, style, className, ...props }: Props) => {
               styles.cancelText,
             ]}
           >
-            取消
+            {cancelText || "取消"}
           </Text>
         </View>
       )}
