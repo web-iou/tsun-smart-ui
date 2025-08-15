@@ -31,8 +31,8 @@ const Cell = ({
   const getItemStyle = () => {
     if (size === "large") {
       return {
-        paddingTop: 17,
-        paddingBottom: 18,
+        paddingTop: 18,
+        paddingBottom: 17,
       };
     }
     return {
@@ -58,7 +58,7 @@ const Cell = ({
               styles.item,
               getItemStyle(),
               {
-                borderBottomWidth: index === data.length - 1 ? 0 : 1,
+                borderBottomWidth: index === data.length - 1 ? 0 : StyleSheet.hairlineWidth,
                 borderColor: theme.colors.border.primary,
               },
               listItemStyle,

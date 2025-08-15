@@ -29,8 +29,8 @@ const Radio = <T extends readonly DataItem[]>({
   const getItemStyle = () => {
     if (size === "large") {
       return {
-        paddingTop: 26,
-        paddingBottom: 25,
+        paddingTop: 18,
+        paddingBottom: 17,
       };
     }
     return {
@@ -56,7 +56,7 @@ const Radio = <T extends readonly DataItem[]>({
               styles.item,
               getItemStyle(),
               {
-                borderBottomWidth: index === data.length - 1 ? 0 : 1,
+                borderBottomWidth: index === data.length - 1 ? 0 : StyleSheet.hairlineWidth,
                 borderColor: theme.colors.border.primary,
               },
             ]}

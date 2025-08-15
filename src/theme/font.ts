@@ -8,7 +8,7 @@ export interface TypographyStyleConfig {
   titleLarge: TextStyle;
   /** 导航标题样式 - 17px/24px/600 @style fontSize:17 lineHeight:24 fontWeight:600 */
   navTitle: TextStyle;
-  /** 卡片标题样式 - 16px/22px/500 @style fontSize:16 lineHeight:22 fontWeight:500 */
+  /** 卡片标题样式 - 15px/21px/500 @style fontSize:15 lineHeight:21 fontWeight:500 */
   cardTitle: TextStyle;
   /** 正文加粗样式 - 15px/21px/500 @style fontSize:15 lineHeight:21 fontWeight:500 */
   bodyStrong: TextStyle;
@@ -43,8 +43,8 @@ const typographyStyles: TypographyStyleConfig = {
   },
   /** 卡片标题样式 - 用于卡片组件标题 */
   cardTitle: {
-    fontSize: 16, // 字体大小: 16px
-    lineHeight: 22, // 行高: 22px
+    fontSize: 15, // 字体大小: 15px
+    lineHeight: 21, // 行高: 21px
     fontWeight: "500", // 字重: 中粗
   },
   /** 正文加粗样式 - 用于重要正文内容 */
