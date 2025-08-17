@@ -3,13 +3,13 @@ import {
   TextInput as RNTextInput,
   View,
   ViewStyle,
-  Animated,
 } from "react-native";
 import TextInput, { type Props as TextInputProps } from "../TextInput";
 import Text from "../Text";
 import type { themeProp } from "../../theme";
 import { useAppTheme } from "../Provider";
-import { useRef, useState, useCallback, useEffect } from "react";
+import { useRef, useState, useCallback } from "react";
+import Animated, { FadeInRight, FadeOutRight } from "react-native-reanimated";
 
 type Props = TextInputProps & {
   theme?: themeProp;
@@ -29,10 +29,6 @@ const Search = ({
   const [onFocus, setOnFocus] = useState(false);
   const textInputRef = useRef<RNTextInput>(null);
 
-  // 动画值
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-  const slideAnim = useRef(new Animated.Value(-20)).current;
-
   const handleFocus = useCallback(() => {
     setOnFocus(true);
   }, []);
@@ -46,41 +42,10 @@ const Search = ({
   }, []);
 
   // 监听焦点状态变化，执行动画
-  useEffect(() => {
-    if (onFocus) {
-      // 显示动画：淡入 + 滑入
-      Animated.parallel([
-        Animated.timing(fadeAnim, {
-          toValue: 1,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-        Animated.timing(slideAnim, {
-          toValue: 0,
-          duration: 200,
-          useNativeDriver: true,
-        }),
-      ]).start();
-    } else {
-      // 隐藏动画：淡出 + 滑出
-      Animated.parallel([
-        Animated.timing(fadeAnim, {
-          toValue: 0,
-          duration: 150,
-          useNativeDriver: true,
-        }),
-        Animated.timing(slideAnim, {
-          toValue: -20,
-          duration: 150,
-          useNativeDriver: true,
-        }),
-      ]).start();
-    }
-  }, [onFocus, fadeAnim, slideAnim]);
 
   return (
     <View style={[styles.container, style]} className={className}>
-      <View style={[styles.inputContainer, { flex: onFocus ? 0.85 : 1 }]}>
+      <View style={[styles.inputContainer, { flex: 1 }]}>
         <TextInput
           left="search"
           showClearButton
@@ -91,31 +56,27 @@ const Search = ({
           {...props}
         />
       </View>
-      <Animated.View
-        style={[
-          styles.cancelContainer,
-          {
-            opacity: fadeAnim,
-            transform: [{ translateX: slideAnim }],
-            flex: onFocus ? 0.15 : 0,
-            overflow: "hidden",
-          },
-        ]}
-        pointerEvents={onFocus ? "auto" : "none"}
-      >
-        <Text
-          onPress={handleCancel}
-          variant="bodyStrong"
-          style={[
-            {
-              color: theme.colors.brand.primary,
-            },
-            styles.cancelText,
-          ]}
+      {onFocus && (
+        <Animated.View
+          style={[styles.cancelContainer]}
+          entering={FadeInRight.duration(200).springify().damping(15)}
+          exiting={FadeOutRight.duration(150)}
+          pointerEvents={onFocus ? "auto" : "none"}
         >
-          {onFocus ? cancelText || "取消" : ""}
-        </Text>
-      </Animated.View>
+          <Text
+            onPress={handleCancel}
+            variant="bodyStrong"
+            style={[
+              {
+                color: theme.colors.brand.primary,
+              },
+              styles.cancelText,
+            ]}
+          >
+            {cancelText}
+          </Text>
+        </Animated.View>
+      )}
     </View>
   );
 };
@@ -137,6 +98,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4, // 增加点击区域
     paddingVertical: 4,
     justifyContent: "center",
+    marginLeft: 12,
     alignItems: "center",
     // 确保取消按钮有最小宽度
     minWidth: 0,
