@@ -1,6 +1,7 @@
 import { Text as RNText, type TextProps } from "react-native";
 import { useAppTheme } from "../Provider";
 import type { themeProp } from "../../theme";
+import { RefObject, useRef } from "react";
 export type TextVariantType =
   | "titleLarge" /** 18px/26px/600 大标题样式 */
   | "navTitle" /** 17px/24px/600 导航标题样式 */
@@ -28,6 +29,7 @@ export interface TextComponentProps extends TextProps {
    */
   variant?: TextVariantType;
   className?: string;
+  ref?: RefObject<RNText>;
   /** 主题配置 */
   theme?: themeProp;
 }
@@ -36,11 +38,12 @@ const Text = ({
   variant = "body",
   style,
   theme: initialTheme,
+  ref,
   ...props
 }: TextComponentProps) => {
   const theme = useAppTheme(initialTheme);
   const variantStyle = theme.fonts?.[variant];
-
+  const textRef = useRef<RNText>(null);
   return (
     <RNText
       style={[
@@ -50,6 +53,18 @@ const Text = ({
         variantStyle,
         style,
       ]}
+      ref={ref ?? textRef}
+      suppressHighlighting
+      onPressIn={() => {
+        (ref ?? textRef)?.current?.setNativeProps({
+          opacity: 0.1,
+        });
+      }}
+      onPressOut={() => {
+        (ref ?? textRef)?.current?.setNativeProps({
+          opacity: 1,
+        });
+      }}
       {...props}
     />
   );

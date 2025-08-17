@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     textAlignVertical: "center",
+    includeFontPadding: false,
   },
   label: {
     alignSelf: "flex-start",
