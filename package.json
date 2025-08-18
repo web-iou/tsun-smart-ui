@@ -62,7 +62,6 @@
   "devDependencies": {
     "@babel/core": "^7.27.4",
     "@babel/preset-react": "^7.27.1",
-    "@callstack/react-theme-provider": "^3.0.9",
     "@commitlint/config-conventional": "^19.6.0",
     "@eslint/compat": "^1.2.7",
     "@eslint/eslintrc": "^3.3.0",
@@ -150,5 +149,8 @@
         }
       ]
     ]
+  },
+  "dependencies": {
+    "@callstack/react-theme-provider": "^3.0.9"
   }
 }
