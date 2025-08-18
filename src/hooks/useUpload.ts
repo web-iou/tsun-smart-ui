@@ -4,6 +4,7 @@ export interface UploadOptions {
   apiUrl: string;
   name?: string;
   headers?: Record<string, string>;
+  timeout?: number; // 超时时间，单位毫秒
 }
 export interface RNFile {
   uri: string;
@@ -11,7 +12,7 @@ export interface RNFile {
   type: string;
 }
 export default function useUpload<T = any>(options: UploadOptions) {
-  const { apiUrl, name = "file", headers = {} } = options;
+  const { apiUrl, name = "file", headers = {}, timeout = 1000*10 } = options; 
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -23,6 +24,9 @@ export default function useUpload<T = any>(options: UploadOptions) {
         Object.entries(headers).forEach(([key, value]) => {
           xhr.setRequestHeader(key, value);
         });
+
+        // 设置超时
+        xhr.timeout = timeout;
 
         // 上传进度监听
         xhr.upload.onprogress = (event) => {
@@ -47,6 +51,20 @@ export default function useUpload<T = any>(options: UploadOptions) {
           reject(new Error("Upload failed"));
         };
 
+        // 超时处理
+        xhr.ontimeout = () => {
+          setUploading(false);
+          setProgress(0);
+          reject(new Error(`Upload timeout after ${timeout}ms`));
+        };
+
+        // 请求被中止处理
+        xhr.onabort = () => {
+          setUploading(false);
+          setProgress(0);
+          reject(new Error("Upload aborted"));
+        };
+
         const formData = new FormData();
         formData.append(name, file);
         xhr.send(formData);
@@ -55,7 +73,7 @@ export default function useUpload<T = any>(options: UploadOptions) {
         setProgress(0);
       });
     },
-    [apiUrl, name, headers],
+    [apiUrl, name, headers, timeout],
   );
   return { uploading, progress, startUpload };
 }

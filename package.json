@@ -1,6 +1,6 @@
 {
   "name": "tsun-smart-ui",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "UI Library",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -38,7 +38,8 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli lib",
     "prepare": "bob build",
-    "release": "release-it --only-version"
+    "release": "release-it --only-version",
+    "postinstall": "patch-package"
   },
   "keywords": [
     "react-native",
@@ -61,6 +62,7 @@
   "devDependencies": {
     "@babel/core": "^7.27.4",
     "@babel/preset-react": "^7.27.1",
+    "@callstack/react-theme-provider": "^3.0.9",
     "@commitlint/config-conventional": "^19.6.0",
     "@eslint/compat": "^1.2.7",
     "@eslint/eslintrc": "^3.3.0",
@@ -78,16 +80,21 @@
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "jest": "^29.7.0",
+    "nativewind": "^4.1.23",
+    "patch-package": "^8.0.0",
+    "postinstall-postinstall": "^2.1.0",
     "prettier": "^3.0.3",
     "react": "19.0.0",
     "react-native": "0.79.3",
     "react-native-builder-bob": "0.20.4",
+    "react-native-reanimated": "3.18.0",
     "release-it": "^17.10.0",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+    "react": "^19.0.0",
+    "react-native": "^0.78.2",
+    "react-native-reanimated": "^3.19.1"
   },
   "workspaces": [
     "example"
@@ -133,7 +140,7 @@
         {
           "esm": true,
           "babelrc": true,
-          "minify": false
+          "minify": true
         }
       ],
       [
@@ -143,10 +150,5 @@
         }
       ]
     ]
-  },
-  "dependencies": {
-    "@callstack/react-theme-provider": "^3.0.9",
-    "nativewind": "^4.1.23",
-    "react-native-reanimated": "^3.18.0"
   }
 }
