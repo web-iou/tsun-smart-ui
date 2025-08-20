@@ -11,7 +11,7 @@ import type { themeProp } from "../../theme";
 import Text from "../Text";
 import type { DefaultIconName } from "../Icon";
 import Icon from "../Icon";
-import type { ReactNode, RefObject } from "react";
+import { ReactNode, RefObject, useLayoutEffect, useRef } from "react";
 export type Props = TextInputProps & {
   theme?: themeProp;
   label?: string;
@@ -36,13 +36,20 @@ const TextInput = ({
   inputWrapperStyle,
   inputStyle,
   onPress,
+  placeholder,
   maxLength = 25,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
+  const textInputRef = useRef<RNTextInput>(null);
   const theme = useAppTheme(initialTheme);
   const hostTextInputStyle: Props["inputStyle"] = {
     color: theme.colors.neutral.title,
   };
+  useLayoutEffect(() => {
+    (ref ?? textInputRef)?.current?.setNativeProps({
+      placeholder: placeholder,
+    });
+  }, [placeholder]);
   return (
     <View className={className}>
       {label && (
@@ -84,8 +91,21 @@ const TextInput = ({
           }
           maxLength={maxLength}
           {...props}
-          ref={ref}
-          style={[styles.textInput, hostTextInputStyle, inputStyle]}
+          ref={ref ?? textInputRef}
+          multiline={false}
+          numberOfLines={1}
+          style={[
+            styles.textInput,
+            hostTextInputStyle,
+            inputStyle,
+            {
+              fontFamily:
+                //@ts-ignore
+                inputStyle?.fontWeight === "bold"
+                  ? "Roboto-Regular"
+                  : "Roboto-Bold",
+            },
+          ]}
           placeholderTextColor={theme.colors.neutral.tip}
           clearButtonMode={showClearButton ? "while-editing" : "never"}
         />
