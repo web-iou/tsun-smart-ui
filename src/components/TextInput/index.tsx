@@ -37,7 +37,7 @@ const TextInput = ({
   inputStyle,
   onPress,
   placeholder,
-  maxLength = 25,
+  maxLength = 100,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const textInputRef = useRef<RNTextInput>(null);
@@ -102,8 +102,8 @@ const TextInput = ({
               fontFamily:
                 //@ts-ignore
                 inputStyle?.fontWeight === "bold"
-                  ? "Roboto-Regular"
-                  : "Roboto-Bold",
+                  ? "Roboto-Bold"
+                  : "Roboto-Regular",
             },
           ]}
           placeholderTextColor={theme.colors.neutral.tip}
