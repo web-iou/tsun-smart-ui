@@ -21,7 +21,7 @@ interface CodeButtonProps {
   onPress: () => void;
   i18n: Required<CodeTextInputI18n>;
   ref?: RefObject<{
-    setTargetDate: (date: number) => void;
+    setTargetDate: (date: number | undefined) => void;
   }>;
 }
 

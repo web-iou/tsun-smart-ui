@@ -68,6 +68,7 @@ export const getButtonStyles = ({
 }: GetButtonStylesParams) => {
   const baseStyle = {
     height: size === "large" ? 48 : size === "medium" ? 40 : 32,
+    paddingHorizontal: variant === "text" ? 0 : size === "small" ? 24 : 32,
   };
 
   if (variant === "text") {
@@ -149,12 +150,14 @@ export const getIconStyles = ({
     return {
       color: disabled ? colors.outline.textDisabled : colors.outline.text,
       fontSize: baseIconSize,
+      marginRight: reverse ? 0 : 8,
     };
   }
 
   return {
     color: disabled ? colors.primary.textDisabled : colors.primary.text,
     fontSize: baseIconSize,
+    marginRight: reverse ? 0 : 8,
   };
 };
 

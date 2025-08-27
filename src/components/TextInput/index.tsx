@@ -11,7 +11,7 @@ import type { themeProp } from "../../theme";
 import Text from "../Text";
 import type { DefaultIconName } from "../Icon";
 import Icon from "../Icon";
-import { ReactNode, RefObject, useLayoutEffect, useRef } from "react";
+import { ReactNode, RefObject, useRef } from "react";
 export type Props = TextInputProps & {
   theme?: themeProp;
   label?: string;
@@ -45,11 +45,6 @@ const TextInput = ({
   const hostTextInputStyle: Props["inputStyle"] = {
     color: theme.colors.neutral.title,
   };
-  useLayoutEffect(() => {
-    (ref ?? textInputRef)?.current?.setNativeProps({
-      placeholder: placeholder,
-    });
-  }, [placeholder]);
   return (
     <View className={className}>
       {label && (
@@ -91,6 +86,7 @@ const TextInput = ({
           }
           maxLength={maxLength}
           {...props}
+          placeholder={placeholder}
           ref={ref ?? textInputRef}
           multiline={false}
           numberOfLines={1}

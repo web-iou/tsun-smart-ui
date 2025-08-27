@@ -69,7 +69,6 @@ const Button = ({
 
   const containerStyle = StyleSheet.flatten([
     styles.container,
-    variant !== "text" && styles.containerPadding,
     getButtonStyles({ ...commonParams, size }),
     isPressed &&
       !loading &&
@@ -131,9 +130,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 100,
     flexDirection: "row",
-  },
-  containerPadding: {
-    paddingHorizontal: 32,
   },
   loadingIndicator: {
     marginRight: 8,
