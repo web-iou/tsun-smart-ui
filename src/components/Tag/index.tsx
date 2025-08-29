@@ -46,8 +46,8 @@ const Tag = ({
 };
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: 12,
-    paddingVertical: 3.5,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
     borderRadius: 4,
     alignItems: "center",
     justifyContent: "center",

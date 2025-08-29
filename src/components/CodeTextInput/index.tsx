@@ -23,9 +23,10 @@ interface CodeButtonProps {
   ref?: RefObject<{
     setTargetDate: (date: number | undefined) => void;
   }>;
+  buttonStyle?: ViewStyle;
 }
 
-const CodeButton = ({ onPress, i18n, ref }: CodeButtonProps) => {
+const CodeButton = ({ onPress, i18n, buttonStyle, ref }: CodeButtonProps) => {
   const [targetDate, setTargetDate] = useState<number>();
   const { formattedRes, timeLeft } = useCountdown({
     targetDate,
@@ -52,7 +53,7 @@ const CodeButton = ({ onPress, i18n, ref }: CodeButtonProps) => {
 
   return (
     <Button
-      style={styles.button}
+      style={StyleSheet.flatten([styles.button, buttonStyle])}
       title={getButtonText()}
       onPress={onPress}
       disabled={timeLeft > 0}
@@ -76,6 +77,7 @@ const CodeTextInput = ({
   i18n = {},
   style,
   btnRef,
+  buttonStyle,
   ...textInputProps
 }: CodeTextInputProps) => {
   // 合并默认文本和用户自定义文本
@@ -85,7 +87,14 @@ const CodeTextInput = ({
     <TextInput
       style={style}
       placeholder="请输入验证码"
-      right={<CodeButton ref={btnRef} onPress={onPress} i18n={mergedI18n} />}
+      right={
+        <CodeButton
+          ref={btnRef}
+          onPress={onPress}
+          i18n={mergedI18n}
+          buttonStyle={buttonStyle}
+        />
+      }
       {...textInputProps}
     />
   );

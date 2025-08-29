@@ -22,6 +22,7 @@ export type Props = TextInputProps & {
   className?: string;
   inputStyle?: TextInputProps["style"];
   inputWrapperStyle?: ViewStyle;
+  rounded?: boolean;
 };
 
 const TextInput = ({
@@ -38,6 +39,7 @@ const TextInput = ({
   onPress,
   placeholder,
   maxLength = 100,
+  rounded = true,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const textInputRef = useRef<RNTextInput>(null);
@@ -68,6 +70,7 @@ const TextInput = ({
             backgroundColor: readOnly
               ? theme.colors.background.disabled
               : theme.colors.neutral.white,
+            borderRadius: rounded ? 100 : 8,
           },
           inputWrapperStyle,
         ]}
@@ -113,7 +116,6 @@ const TextInput = ({
 const styles = StyleSheet.create({
   container: {
     height: 48,
-    borderRadius: 100,
     flexDirection: "row",
     paddingHorizontal: 20,
     alignItems: "center",
