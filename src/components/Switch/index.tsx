@@ -62,22 +62,17 @@ const Switch= ({
 
   // 获取背景颜色
   const getBackgroundColor = () => {
-    if (disabled) {
-      return value
-        ? theme.colors.brand.primaryDisabled
-        : theme.colors.neutral.disabled;
-    }
-    return value ? theme.colors.brand.primary : theme.colors.neutral.tip;
+    return value ? theme.colors.switch.selectedBackground : theme.colors.switch.background;
   };
 
   // 获取滑块颜色
   const getThumbColor = () => {
-    return theme.colors.neutral.white;
+    return theme.colors.switch.thumb;
   };
 
   // 获取文字颜色
   const getTextColor = () => {
-    return value ? theme.colors.neutral.white : theme.colors.neutral.primary;
+    return value ? theme.colors.switch.selectedText : theme.colors.switch.text;
   };
 
   // 计算滑块位置
@@ -100,6 +95,7 @@ const Switch= ({
           width: switchWidth,
           height: switchHeight,
           backgroundColor: getBackgroundColor(),
+          opacity: disabled ? 0.5 : 1,
         },
         style,
       ]}

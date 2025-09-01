@@ -104,7 +104,18 @@ export interface ButtonColors {
     textDisabled: string;
   };
 }
-
+export interface SwitchColors {
+  /** 开关按钮背景色 - 橙色 */
+  background: string;
+  /** 开关按钮选中的背景色 - 深橙色 */
+  selectedBackground: string;
+  /** 开关按钮文本色 - 白色 */
+  text: string;
+  /** 开关按钮选中的文本色 - 白色 */
+  selectedText: string;
+  /** 开关按钮滑块色 - 白色 */
+  thumb: string;
+}
 /**
  * 边框色配置 - Border Colors
  */
@@ -157,6 +168,7 @@ export interface FunctionalColors {
 export interface ColorSystem {
   brand: BrandColors;
   button: ButtonColors;
+  switch: SwitchColors;
   border: BorderColors;
   background: BackgroundColors;
   neutral: NeutralColors;
@@ -176,7 +188,13 @@ export const colors: ColorSystem = {
     primaryLight: "#FFF4EB", // 浅色
     primaryDisabled: "#FFD0A5", // 禁用色
   },
-
+  switch: {
+    background: "#bfbfbf", // 开关按钮背景色 - 橙色
+    selectedBackground: "#FF891F", // 开关按钮选中的背景色 - 深橙色
+    text: "#8C8C8C", // 开关按钮文本色 - 白色
+    selectedText: "#FFFFFF", // 开关按钮选中的文本色 - 白色
+    thumb: "#FFFFFF", // 开关按钮滑块色 - 白色
+  },
   // 按钮颜色
   button: {
     primary: {
@@ -282,9 +300,15 @@ export const darkColors: ColorSystem = {
       textDisabled: "#4D3521", // 文本按钮禁用文本色 - 暗褐色
     },
   },
-
   border: {
     primary: "#3D3D3D", // 深色主题边框色
+  },
+  switch: {
+    background: "#595959", // 开关按钮背景色 - 橙色
+    selectedBackground: "#EB882F", // 开关按钮选中的背景色 - 深橙色
+    text: "#8F8F8F", // 开关按钮文本色 - 白色
+    selectedText: "#EB882F", // 开关按钮选中的文本色 - 白色
+    thumb: "#E0E0E0", // 开关按钮滑块色 - 白色
   },
   background: {
     disabled: "#292929",

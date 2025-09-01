@@ -39,7 +39,7 @@ const TextInput = ({
   onPress,
   placeholder,
   maxLength = 100,
-  rounded = true,
+  rounded,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const textInputRef = useRef<RNTextInput>(null);
@@ -70,7 +70,8 @@ const TextInput = ({
             backgroundColor: readOnly
               ? theme.colors.background.disabled
               : theme.colors.neutral.white,
-            borderRadius: rounded ? 100 : 8,
+            borderRadius:
+              (rounded ?? TextInput.prototype.defaultProps.rounded) ? 100 : 8,
           },
           inputWrapperStyle,
         ]}
@@ -113,6 +114,9 @@ const TextInput = ({
     </View>
   );
 };
+TextInput.prototype.defaultProps = {
+  rounded: true,
+};
 const styles = StyleSheet.create({
   container: {
     height: 48,
@@ -127,6 +131,7 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlignVertical: "center",
     includeFontPadding: false,
+    fontSize: 15,
   },
   label: {
     alignSelf: "flex-start",
