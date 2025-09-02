@@ -23,6 +23,7 @@ export type Props = TextInputProps & {
   inputStyle?: TextInputProps["style"];
   inputWrapperStyle?: ViewStyle;
   rounded?: boolean;
+  showArrow?: boolean;
 };
 
 const TextInput = ({
@@ -40,6 +41,7 @@ const TextInput = ({
   placeholder,
   maxLength = 100,
   rounded,
+  showArrow = false,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const textInputRef = useRef<RNTextInput>(null);
@@ -109,7 +111,14 @@ const TextInput = ({
           placeholderTextColor={theme.colors.neutral.tip}
           clearButtonMode={showClearButton ? "while-editing" : "never"}
         />
-        {right}
+        {right ??
+          (showArrow && (
+            <Icon
+              defaultName="right"
+              size={10}
+              color={theme.colors.neutral.primary}
+            />
+          ))}
       </Pressable>
     </View>
   );

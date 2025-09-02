@@ -53,6 +53,7 @@ const Search = ({
           ref={textInputRef}
           onBlur={handleBlur}
           onFocus={handleFocus}
+          returnKeyType="search"
           {...props}
         />
       </View>

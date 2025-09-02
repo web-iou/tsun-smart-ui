@@ -39,7 +39,7 @@ export interface CardProps {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 8,
-    padding: 20,
+    padding: 16,
   },
   titleContainer: {
     flexDirection: "row",
