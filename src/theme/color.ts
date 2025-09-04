@@ -1,35 +1,47 @@
 /**
  * 品牌色配置 - Brand Colors
+ * 
+ * @description
+ * 品牌色系统配置，包含主色调和相关衍生色。
+ * 深色主题：使用更亮的橙色系（#EB882F），浅色变为深橙棕色（#49321F），禁用色为暗褐色（#69411F）
  */
 export interface BrandColors {
-  /** 主色 - 橙色 @color #FF891F */
+  /** 主色 - 橙色 @color #FF891F | 深色主题: #EB882F */
   primary: string;
-  /** 辅助色 - 深橙色 @color #EB7E1D */
+  /** 辅助色 - 深橙色 @color #EB7E1D | 深色主题: #D67C2B */
   onPrimary: string;
-  /** 浅色 - 浅橙色 @color #FFF4EB */
+  /** 浅色 - 浅橙色 @color #FFF4EB | 深色主题: #49321F */
   primaryLight: string;
-  /** 禁用色 - 淡橙色 @color #FFD0A5 */
+  /** 禁用色 - 淡橙色 @color #FFD0A5 | 深色主题: #69411F */
   primaryDisabled: string;
 }
 
 /**
  * 浅色主题品牌色值 - 让VSCode直接显示颜色值
+ * 
+ * @description
+ * 浅色主题下的品牌色具体值定义，使用明亮的橙色系。
+ * 对应深色主题使用更暗的色调以适应深色背景。
  */
 export type LightBrandColors = {
-  readonly primary: "#FF891F"; // 主色 - 橙色
-  readonly onPrimary: "#EB7E1D"; // 辅助色 - 深橙色
-  readonly primaryLight: "#FFF4EB"; // 浅色 - 浅橙色
-  readonly primaryDisabled: "#FFD0A5"; // 禁用色 - 淡橙色
+  readonly primary: "#FF891F"; // 主色 - 橙色 | 深色主题对应: #EB882F
+  readonly onPrimary: "#EB7E1D"; // 辅助色 - 深橙色 | 深色主题对应: #D67C2B
+  readonly primaryLight: "#FFF4EB"; // 浅色 - 浅橙色 | 深色主题对应: #49321F
+  readonly primaryDisabled: "#FFD0A5"; // 禁用色 - 淡橙色 | 深色主题对应: #69411F
 };
 
 /**
  * 深色主题品牌色值 - 让VSCode直接显示颜色值
+ * 
+ * @description
+ * 深色主题下的品牌色具体值定义，使用适合深色背景的色调。
+ * 主色和辅助色保持品牌识别度，浅色和禁用色调整为深色系。
  */
 export type DarkBrandColors = {
-  readonly primary: "#FF891F"; // 主色 - 橙色
-  readonly onPrimary: "#EB7E1D"; // 辅助色 - 深橙色
-  readonly primaryLight: "#332414"; // 深色主题浅色 - 深橙棕
-  readonly primaryDisabled: "#4D3521"; // 深色主题禁用色 - 深棕色
+  readonly primary: "#FF891F"; // 主色 - 橙色（保持品牌色）
+  readonly onPrimary: "#EB7E1D"; // 辅助色 - 深橙色（保持品牌色）
+  readonly primaryLight: "#332414"; // 深色主题浅色 - 深橙棕（适应深色背景）
+  readonly primaryDisabled: "#4D3521"; // 深色主题禁用色 - 深棕色（适应深色背景）
 };
 
 /**
@@ -47,118 +59,143 @@ export type DarkBrandColors = {
  * - 禁用状态 (disabled)
  * - 文本颜色
  * - 禁用状态文本颜色
+ * 
+ * 深色主题：使用更亮的边框和文本色（#FF7A00），禁用状态使用深色系（#4D3521、#666666）
  */
 export interface ButtonColors {
   primary: {
-    /** 主要按钮背景色 @color #FF891F */
+    /** 主要按钮背景色 @color #FF891F | 深色主题: #EB882F */
     background: string;
-    /** 主要按钮按压状态 @color #EB7E1D */
+    /** 主要按钮按压状态 @color #EB7E1D | 深色主题: #D67C2B */
     pressed: string;
-    /** 主要按钮禁用状态 @color #FFD0A5 */
+    /** 主要按钮禁用状态 @color #FFD0A5 | 深色主题: #69411F */
     disabled: string;
-    /** 主要按钮文本色 @color #FFFFFF */
+    /** 主要按钮文本色 @color #FFFFFF | 深色主题: #FFFFFF */
     text: string;
-    /** 主要按钮禁用文本色 @color #FFFFFF */
+    /** 主要按钮禁用文本色 @color #FFFFFF | 深色主题: #999999 */
     textDisabled: string;
   };
   outline: {
-    /** 线框按钮背景色 @color transparent */
+    /** 线框按钮背景色 @color transparent | 深色主题: transparent */
     background: string;
-    /** 线框按钮按压状态 @color #FFF5E6 */
+    /** 线框按钮按压状态 @color #FFF5E6 | 深色主题: #332414 */
     pressed: string;
-    /** 线框按钮禁用背景 @color transparent */
+    /** 线框按钮禁用背景 @color transparent | 深色主题: transparent */
     disabled: string;
-    /** 线框按钮边框色 @color #FF891F */
+    /** 线框按钮边框色 @color #FF891F | 深色主题: #FF7A00 */
     border: string;
-    /** 线框按钮禁用边框色 @color #FFD0A5 */
+    /** 线框按钮禁用边框色 @color #FFD0A5 | 深色主题: #4D3521 */
     borderDisabled: string;
-    /** 线框按钮文本色 @color #FF891F */
+    /** 线框按钮文本色 @color #FF891F | 深色主题: #FF7A00 */
     text: string;
-    /** 线框按钮禁用文本色 @color #FFD0A5 */
+    /** 线框按钮禁用文本色 @color #FFD0A5 | 深色主题: #666666 */
     textDisabled: string;
   };
   text: {
     /** 
      * 文本按钮文本颜色
-     * @default #FF891F - 品牌橙色
+     * @default #FF891F - 品牌橙色 | 深色主题: #FF7A00 - 亮橙色
      * @description 按钮处于正常状态时的文本颜色
      */
     text: string;
     /** 
      * 文本按钮按压状态的背景色
-     * @default rgba(255, 137, 31, 0.12) - 半透明橙色
+     * @default rgba(255, 137, 31, 0.12) - 半透明橙色 | 深色主题: rgba(255, 122, 0, 0.12)
      * @description 按钮被点击时的背景色，使用低透明度提供轻微的视觉反馈
      */
     pressed: string;
     /** 
      * 文本按钮禁用状态的背景色
-     * @default transparent - 透明
+     * @default transparent - 透明 | 深色主题: transparent
      * @description 按钮处于禁用状态时的背景色，保持透明
      */
     disabled: string;
     /** 
      * 文本按钮禁用状态的文本颜色
-     * @default #FFE4CC - 浅橙色
+     * @default #FFE4CC - 浅橙色 | 深色主题: #4D3521 - 暗褐色
      * @description 按钮处于禁用状态时的文本颜色，使用较浅的颜色表示不可用
      */
     textDisabled: string;
   };
 }
+/**
+ * 开关组件色彩配置 - Switch Colors
+ * 
+ * @description
+ * 开关组件的颜色配置，包含背景、文本和滑块颜色。
+ * 深色主题：使用深色背景（#595959）和亮色滑块（#E0E0E0），选中状态使用品牌橙色
+ */
 export interface SwitchColors {
-  /** 开关按钮背景色 - 橙色 */
+  /** 开关按钮背景色 @color #BFBFBF | 深色主题: #595959 */
   background: string;
-  /** 开关按钮选中的背景色 - 深橙色 */
+  /** 开关按钮选中的背景色 @color #FF891F | 深色主题: #EB882F */
   selectedBackground: string;
-  /** 开关按钮文本色 - 白色 */
+  /** 开关按钮文本色 @color #8C8C8C | 深色主题: #8F8F8F */
   text: string;
-  /** 开关按钮选中的文本色 - 白色 */
+  /** 开关按钮选中的文本色 @color #FFFFFF | 深色主题: #EB882F */
   selectedText: string;
-  /** 开关按钮滑块色 - 白色 */
+  /** 开关按钮滑块色 @color #FFFFFF | 深色主题: #E0E0E0 */
   thumb: string;
 }
 /**
  * 边框色配置 - Border Colors
+ * 
+ * @description
+ * 边框颜色配置，用于组件边框和分割线。
+ * 深色主题：使用深灰色边框（#3D3D3D）以适应深色背景
  */
 export interface BorderColors {
-  /** 主要边框色 @color #E6E6E6 */
+  /** 主要边框色 @color #E6E6E6 | 深色主题: #3D3D3D */
   primary: string;
 }
 
 /**
  * 背景色配置 - Background Colors
+ * 
+ * @description
+ * 背景颜色配置，包含主要背景和禁用状态背景。
+ * 深色主题：使用深色背景（#121314）和深灰色禁用背景（#292929）
  */
 export interface BackgroundColors {
-  /** 禁用背景色 @color #F0F0F0 */
+  /** 禁用背景色 @color #F0F0F0 | 深色主题: #292929 */
   disabled: string;
-  /** 主要背景色 @color #F7F7F7 */
+  /** 主要背景色 @color #F7F7F7 | 深色主题: #121314 */
   primary: string;
 }
 
 /**
  * 中性色配置 - Neutral Colors
+ * 
+ * @description
+ * 中性色系统配置，包含文本和背景的中性色。
+ * 深色主题：使用亮色文本（#E0E0E0、#B8B8B8）和深色背景（#1C1D1F），确保良好对比度
  */
 export interface NeutralColors {
-  /** 标题色 - 纯黑 @color #262626 */
+  /** 标题色 - 纯黑 @color #262626 | 深色主题: #E0E0E0 */
   title: string;
-  /** 副标题色 - 深灰 @color #595959 */
+  /** 副标题色 - 深灰 @color #595959 | 深色主题: #B8B8B8 */
   secondaryTitle: string;
-  /** 主要文本色 - 中灰 @color #8C8C8C */
+  /** 主要文本色 - 中灰 @color #8C8C8C | 深色主题: #8F8F8F */
   primary: string;
-  /** 提示文本色 - 浅灰 @color #BFBFBF */
+  /** 提示文本色 - 浅灰 @color #BFBFBF | 深色主题: #595959 */
   tip: string;
-  /** 禁用色 @color #D9D9D9 */
+  /** 禁用色 @color #D9D9D9 | 深色主题: #525252 */
   disabled: string;
-  /** 纯白色 @color #FFFFFF */
+  /** 纯白色 @color #FFFFFF | 深色主题: #1C1D1F */
   white: string;
 }
 
 /**
  * 辅助色配置 - Functional Colors
+ * 
+ * @description
+ * 功能性颜色配置，用于信息、成功、错误、警告等状态。
+ * 深色主题：使用更亮的主色调（#4797FF、#2EC173、#F76869、#EB882F）和深色浅色调
  */
 export interface FunctionalColors {
-  /** 主色 @color #338BFF, #1FC16B, #F75455, #FF9500 */
+  /** 主色 @color #338BFF, #1FC16B, #F75455, #FF9500 | 深色主题: #4797FF, #2EC173, #F76869, #EB882F */
   primary: string;
-  /** 浅色 @color #EAF3FF, #E8F9F0, #FFF0F0, #FFF7E6 */
+  /** 浅色 @color #EAF3FF, #E8F9F0, #FFF0F0, #FFF7E6 | 深色主题: #233E63, #1D4632, #532B2C, #FFF7E6 */
   light: string;
 }
 

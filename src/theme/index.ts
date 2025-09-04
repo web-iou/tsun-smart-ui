@@ -1,6 +1,6 @@
 import colors, { darkColors } from "./color";
 import fonts from "./font";
-import type { $DeepPartial } from "@callstack/react-theme-provider";
+import { $DeepPartial } from "@callstack/react-theme-provider";
 
 export const lightTheme = {
   colors,
@@ -12,4 +12,4 @@ export const darkTheme = {
   fonts,
   isDark: true,
 };
-export type themeProp = $DeepPartial<typeof lightTheme>;
+export type themeProp = $DeepPartial<typeof lightTheme>

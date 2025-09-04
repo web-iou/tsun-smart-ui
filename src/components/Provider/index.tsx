@@ -1,11 +1,11 @@
 import { createTheming } from "@callstack/react-theme-provider";
-import { lightTheme, type themeProp } from "../../theme";
+import { lightTheme } from "../../theme";
 
 const {
   ThemeProvider,
   useTheme: useAppTheme,
   withTheme,
-} = createTheming<themeProp>(lightTheme);
+} = createTheming(lightTheme);
 
 export { useAppTheme, withTheme };
 export default ThemeProvider;
