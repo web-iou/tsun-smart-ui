@@ -39,8 +39,8 @@ const TextInput = ({
   inputStyle,
   onPress,
   placeholder,
-  maxLength = 100,
   rounded,
+  maxLength,
   showArrow = false,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
@@ -90,7 +90,7 @@ const TextInput = ({
           pointerEvents={
             readOnly || !(props.editable ?? true) ? "none" : "auto"
           }
-          maxLength={maxLength}
+          maxLength={maxLength ?? TextInput.prototype.defaultProps.maxLength}
           {...props}
           placeholder={placeholder}
           ref={ref ?? textInputRef}
@@ -125,6 +125,7 @@ const TextInput = ({
 };
 TextInput.prototype.defaultProps = {
   rounded: true,
+  maxLength: 50,
 };
 const styles = StyleSheet.create({
   container: {
