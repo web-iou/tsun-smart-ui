@@ -5,13 +5,15 @@ import {
   type ViewStyle,
   type TextInputProps,
   Pressable,
+  Platform,
 } from "react-native";
 import { useAppTheme } from "../Provider";
 import type { themeProp } from "../../theme";
+import TextInputForAndroid from "react-native-textinput";
 import Text from "../Text";
 import type { DefaultIconName } from "../Icon";
 import Icon from "../Icon";
-import { ReactNode, RefObject, useRef } from "react";
+import { ReactNode, RefObject, useRef, createElement } from "react";
 export type Props = TextInputProps & {
   theme?: themeProp;
   label?: string;
@@ -85,32 +87,33 @@ const TextInput = ({
             style={[styles.leftIcon, hostTextInputStyle]}
           />
         )}
-        <RNTextInput
-          readOnly={readOnly}
-          pointerEvents={
-            readOnly || !(props.editable ?? true) ? "none" : "auto"
-          }
-          maxLength={maxLength ?? TextInput.prototype.defaultProps.maxLength}
-          {...props}
-          placeholder={placeholder}
-          ref={ref ?? textInputRef}
-          multiline={false}
-          numberOfLines={1}
-          style={[
-            styles.textInput,
-            hostTextInputStyle,
-            inputStyle,
-            {
-              fontFamily:
-                //@ts-ignore
-                inputStyle?.fontWeight === "bold"
-                  ? "Roboto-Bold"
-                  : "Roboto-Regular",
-            },
-          ]}
-          placeholderTextColor={theme.colors.neutral.tip}
-          clearButtonMode={showClearButton ? "while-editing" : "never"}
-        />
+        {createElement(
+          Platform.OS === "android" ? TextInputForAndroid : RNTextInput,
+          {
+            ...props,
+            readOnly: readOnly,
+            pointerEvents:
+              readOnly || !(props.editable ?? true) ? "none" : "auto",
+            maxLength: maxLength ?? TextInput.prototype.defaultProps.maxLength,
+            placeholder: placeholder,
+            ref: ref ?? textInputRef,
+            numberOfLines: 1,
+            style: [
+              styles.textInput,
+              hostTextInputStyle,
+              inputStyle,
+              {
+                fontFamily:
+                  //@ts-ignore
+                  inputStyle?.fontWeight === "bold"
+                    ? "Roboto-Bold"
+                    : "Roboto-Regular",
+              },
+            ],
+            placeholderTextColor: theme.colors.neutral.tip,
+            clearButtonMode: showClearButton ? "while-editing" : "never",
+          },
+        )}
         {right ??
           (showArrow && (
             <Icon
