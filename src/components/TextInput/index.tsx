@@ -4,12 +4,10 @@ import {
   type ViewStyle,
   Pressable,
   TextInput as RNTextInput,
+  type TextInputProps,
 } from "react-native";
 import { useAppTheme } from "../Provider";
 import type { themeProp } from "../../theme";
-import CustomTextInput, {
-  type TextInputProps,
-} from "@see_you/react-native-textinput";
 import Text from "../Text";
 import type { DefaultIconName } from "../Icon";
 import Icon from "../Icon";
@@ -88,24 +86,21 @@ const TextInput = ({
           />
         )}
 
-        <CustomTextInput
-          readOnly
-          maxLength={maxLength ?? TextInput.prototype.defaultProps.maxLength}
-          placeholder={placeholder}
-          //@ts-ignore
-          ref={ref ?? textInputRef}
-          style={StyleSheet.flatten([
-            styles.textInput,
-            hostTextInputStyle,
-            inputStyle,
-          ])}
-          placeholderTextColor={theme.colors.neutral.tip}
-          clearButtonMode={showClearButton ? "while-editing" : "never"}
-          pointerEvents={
-            readOnly || !(props.editable ?? true) ? "none" : "auto"
-          }
-          {...props}
-        />
+          <RNTextInput
+            readOnly={readOnly}
+            pointerEvents={
+              readOnly || !(props.editable ?? true) ? "none" : "auto"
+            }
+            underlineColorAndroid={"transparent"}
+            maxLength={maxLength ?? TextInput.prototype.defaultProps.maxLength}
+            {...props}
+            placeholder={placeholder}
+            //@ts-ignore
+            ref={ref ?? textInputRef}
+            style={[styles.textInput, hostTextInputStyle, inputStyle]}
+            placeholderTextColor={theme.colors.neutral.tip}
+            clearButtonMode={showClearButton ? "while-editing" : "never"}
+          />
         {right ??
           (showArrow && (
             <Icon

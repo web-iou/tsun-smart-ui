@@ -1,8 +1,8 @@
 {
   "name": "tsun-smart-ui",
-  "version": "0.8.2",
+  "version": "0.8.2-alpha.1",
   "description": "UI Library",
-  "main": "./src/index.tsx",
+  "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
@@ -151,7 +151,6 @@
     ]
   },
   "dependencies": {
-    "@callstack/react-theme-provider": "^3.0.9",
-    "@see_you/react-native-textinput": "^0.1.0"
+    "@callstack/react-theme-provider": "^3.0.9"
   }
 }
