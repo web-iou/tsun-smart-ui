@@ -12,7 +12,7 @@ import Text from "../Text";
 import type { DefaultIconName } from "../Icon";
 import Icon from "../Icon";
 import { ReactNode, RefObject, useRef } from "react";
-export type Props = TextInputProps & {
+export interface Props extends TextInputProps {
   theme?: themeProp;
   label?: string;
   left?: DefaultIconName;
@@ -24,7 +24,7 @@ export type Props = TextInputProps & {
   inputWrapperStyle?: ViewStyle;
   rounded?: boolean;
   showArrow?: boolean;
-};
+}
 
 const TextInput = ({
   label,
@@ -86,21 +86,21 @@ const TextInput = ({
           />
         )}
 
-          <RNTextInput
-            readOnly={readOnly}
-            pointerEvents={
-              readOnly || !(props.editable ?? true) ? "none" : "auto"
-            }
-            underlineColorAndroid={"transparent"}
-            maxLength={maxLength ?? TextInput.prototype.defaultProps.maxLength}
-            {...props}
-            placeholder={placeholder}
-            //@ts-ignore
-            ref={ref ?? textInputRef}
-            style={[styles.textInput, hostTextInputStyle, inputStyle]}
-            placeholderTextColor={theme.colors.neutral.tip}
-            clearButtonMode={showClearButton ? "while-editing" : "never"}
-          />
+        <RNTextInput
+          readOnly={readOnly}
+          pointerEvents={
+            readOnly || !(props.editable ?? true) ? "none" : "auto"
+          }
+          underlineColorAndroid={"transparent"}
+          maxLength={maxLength ?? TextInput.prototype.defaultProps.maxLength}
+          {...props}
+          placeholder={placeholder}
+          //@ts-ignore
+          ref={ref ?? textInputRef}
+          style={[styles.textInput, hostTextInputStyle, inputStyle]}
+          placeholderTextColor={theme.colors.neutral.tip}
+          clearButtonMode={showClearButton ? "while-editing" : "never"}
+        />
         {right ??
           (showArrow && (
             <Icon

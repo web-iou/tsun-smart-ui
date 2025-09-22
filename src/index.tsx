@@ -47,7 +47,7 @@ export { default as Search } from "./components/Search";
 
 // 导出TextInput组件
 export { default as TextInput } from "./components/TextInput";
-
+export type { Props as TextInputProps } from "./components/TextInput";
 // 导出Cell组件
 export { default as Cell } from "./components/Cell";
 export type { DataItem as CellDataType } from "./components/Cell";

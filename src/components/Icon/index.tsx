@@ -49,9 +49,6 @@ let defaultGlyphs = {
   circle: {
     unicode: ["", "circle"],
   },
-  close: {
-    unicode: ["", "close"],
-  },
   code: {
     unicode: ["", "code"],
   },
@@ -156,6 +153,9 @@ let defaultGlyphs = {
   },
   warning: {
     unicode: ["", "warning"],
+  },
+  "mobile-email": {
+    unicode: ["", "mobile_email"],
   },
 };
 export type DefaultIconName = keyof typeof defaultGlyphs;
