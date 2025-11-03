@@ -24,6 +24,7 @@ export interface Props extends TextInputProps {
   inputWrapperStyle?: ViewStyle;
   rounded?: boolean;
   showArrow?: boolean;
+  required?: boolean;
 }
 
 const TextInput = ({
@@ -33,7 +34,7 @@ const TextInput = ({
   readOnly,
   right,
   ref,
-  showClearButton = false,
+  showClearButton = true,
   className,
   inputWrapperStyle,
   inputStyle,
@@ -42,6 +43,7 @@ const TextInput = ({
   rounded,
   maxLength,
   showArrow = false,
+  required = false,
   ...props
 }: Omit<Props, "clearButtonMode">) => {
   const textInputRef = useRef<RNTextInput>(null);
@@ -61,7 +63,10 @@ const TextInput = ({
             styles.label,
           ]}
         >
-          {label}
+          {label+' '}
+          {required && (
+            <Text style={{ color: theme.colors.error.primary }}>*</Text>
+          )}
         </Text>
       )}
       <Pressable
@@ -121,7 +126,7 @@ const styles = StyleSheet.create({
   container: {
     height: 48,
     flexDirection: "row",
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     alignItems: "center",
   },
   leftIcon: {
