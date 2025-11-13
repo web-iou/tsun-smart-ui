@@ -64,7 +64,7 @@ const Cell = ({
               listItemStyle,
             ])}
             onPress={item.onPress}
-            key={index}
+            key={item.title}
           >
             <View style={styles.leftContainer}>
               {item.left?.(size === "large" ? 36 : 20)}
